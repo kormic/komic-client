@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const SMainTitleSection = styled.section`
-  margin: 3rem 0;
+  margin: 3rem 0 0 0;
   text-align: center;
 `;
 
-export const SH1Title = styled.h1`
+export const SMainTitleH1 = styled.h1`
   font-size: 4rem;
   font-weight: 800;
   margin-top: 0;
@@ -16,7 +16,7 @@ export const SH1Title = styled.h1`
   }
 `;
 
-export const SHr = styled.hr`
+export const SMainTitleHr = styled.hr`
   max-width: 6.25rem;
   margin: 1rem auto;
   border-width: 0.25rem;
@@ -25,7 +25,7 @@ export const SHr = styled.hr`
   border-top: 5px solid rgb(251, 191, 36);
 `;
 
-export const SSpanSubHead = styled.span`
+export const SMainTitleSubHeadSpan = styled.span`
   font-size: 0.9rem;
   font-weight: 100;
   text-transform: capitalize;
