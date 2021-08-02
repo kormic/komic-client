@@ -1,12 +1,17 @@
-import { SMainTitleSection, SH1Title, SSpanSubHead, SHr } from './styled';
+import {
+  SMainTitleSection,
+  SMainTitleH1,
+  SMainTitleSubHeadSpan,
+  SMainTitleHr,
+} from './styled';
 
 const MainTitle = () => (
   <SMainTitleSection>
-    <SH1Title>Coding is an art</SH1Title>
-    <SSpanSubHead>
+    <SMainTitleH1>Coding is an art</SMainTitleH1>
+    <SMainTitleSubHeadSpan>
       clean code always looks like it was written by someone who cares
-    </SSpanSubHead>
-    <SHr />
+    </SMainTitleSubHeadSpan>
+    <SMainTitleHr />
   </SMainTitleSection>
 );
 

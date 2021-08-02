@@ -1,8 +1,10 @@
 import { Layout } from "@components";
+import { PostPreview } from "components/PostPreview";
 
 const Home = () => (
   <Layout>
-    <div>Main content</div>
+    <PostPreview />
+    <PostPreview />
   </Layout>
 );
 
