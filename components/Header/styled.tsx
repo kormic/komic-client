@@ -113,3 +113,28 @@ export const SSpecialButton = styled.button`
     background-color: rgba(251, 191, 36, 1);
   }
 `;
+
+export const SHelloMessage = styled.div`
+  position: relative;
+
+  :after {
+    position: absolute;
+    top: 6px;
+    right: -15px;
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 21px;
+    background-color: rgba(251, 191, 36, 1);
+    animation: blink 1s linear infinite alternate;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;

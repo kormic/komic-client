@@ -11,6 +11,7 @@ import {
   SMenuWrapper,
   SMenuWrapperMobile,
   SNavRow,
+  SHelloMessage,
 } from './styled';
 
 const Header = () => {
@@ -22,7 +23,7 @@ const Header = () => {
     <header>
       <SNav>
         <SNavRow>
-          <div>Coding is Fun</div>
+          <SHelloMessage>{'>'} helllo</SHelloMessage>
           {showBrandLogo && (
             <SBrandLogoWrapper>
               <SBrandLogoImage src={owlImage} alt="Komic Logo" />
