@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+import { Footer } from 'components/Footer';
 import { Header } from '../Header';
 import { MainTitle } from '../MainTitle';
 
@@ -17,7 +19,7 @@ const Layout: React.FC = ({ children }) => (
     <Header />
     <MainTitle />
     <SMain>{children}</SMain>
-    <footer>footer</footer>
+    <Footer />
   </section>
 );
 
