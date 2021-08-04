@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { Footer } from 'components/Footer';
-import { Header } from '../Header';
-import { MainTitle } from '../MainTitle';
+import { Footer } from "components/Footer";
+import { Header } from "../Header";
+import { MainTitle } from "../MainTitle";
+
+const SSection = styled.section`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 const SMain = styled.main`
+  flex-grow: 1;
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 4rem;
@@ -15,12 +22,12 @@ const SMain = styled.main`
 `;
 
 const Layout: React.FC = ({ children }) => (
-  <section>
+  <SSection>
     <Header />
     <MainTitle />
     <SMain>{children}</SMain>
     <Footer />
-  </section>
+  </SSection>
 );
 
 export default Layout;

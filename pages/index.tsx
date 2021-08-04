@@ -5,6 +5,7 @@ const Home = () => (
   <Layout>
     <PostPreview />
     <PostPreview />
+    <PostPreview />
   </Layout>
 );
 
