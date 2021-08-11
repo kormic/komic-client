@@ -13,6 +13,7 @@ export const SFooterRowWrapper = styled.div<{
   marginY?: string;
 }>`
   display: flex;
+  font-size: 0.7rem;
   gap: 1rem;
   ${({ marginY }) => `margin: ${marginY ?? '1rem'} 0;`}
 `;

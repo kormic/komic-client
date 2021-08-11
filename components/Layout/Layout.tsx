@@ -12,6 +12,7 @@ const SSection = styled.section`
 
 const SMain = styled.main`
   flex-grow: 1;
+  width: 100%;
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 4rem;

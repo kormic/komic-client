@@ -1,10 +1,26 @@
 import styled from 'styled-components';
 
 export const SPostPreviewBottomWrapper = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  font-size: 0.9rem;
+  display: block;
+
+  @media (min-width: 768px) {
+    display: flex;
+    font-size: 0.9rem;
+  }
 `;
+
+export const STagLabelWrapper = styled.div`
+  @media (min-width: 768px) {
+    margin-right: 0.1rem;
+  }
+`;
+
+export const STagsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+`;
+
 export const STagSpan = styled.span`
   color: rgba(251, 191, 36, 0.6);
 `;

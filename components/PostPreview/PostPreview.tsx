@@ -13,6 +13,8 @@ import {
   SPostPreviewBottomWrapper,
   STagSpan,
   SReadMoreLink,
+  STagLabelWrapper,
+  STagsWrapper,
 } from './styled';
 
 const PostPreview = () => {
@@ -33,9 +35,12 @@ const PostPreview = () => {
         </SPostPreviewP>
       </SPostPreviewMainwWrapper>
       <SPostPreviewBottomWrapper>
-        Tags: <STagSpan>Typescript</STagSpan>
-        <STagSpan>React</STagSpan>
-        <STagSpan>testing</STagSpan>
+        <STagLabelWrapper>Tags:</STagLabelWrapper>
+        <STagsWrapper>
+          <STagSpan>Typescript</STagSpan>
+          <STagSpan>React</STagSpan>
+          <STagSpan>testing</STagSpan>
+        </STagsWrapper>
         <Link href="#" passHref>
           <SReadMoreLink>[Read more...]</SReadMoreLink>
         </Link>
