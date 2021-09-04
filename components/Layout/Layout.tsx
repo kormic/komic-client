@@ -24,7 +24,7 @@ export const SMain = styled.main`
 const Layout: React.FC = ({ children }) => (
   <SSection>
     <Header />
-    <SMain>{children}</SMain>
+    {children}
     <Footer />
   </SSection>
 );

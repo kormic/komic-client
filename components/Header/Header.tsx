@@ -1,7 +1,8 @@
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
-import owlImage from '../../public/owl-logo-dark.png';
-import Menu from './Menu';
+import owlImage from "../../public/owl-logo-dark.png";
+import Menu from "./Menu";
 import {
   SNav,
   SBrandLogoWrapper,
@@ -12,7 +13,7 @@ import {
   SMenuWrapperMobile,
   SNavRow,
   SHelloMessage,
-} from './styled';
+} from "./styled";
 
 const Header = () => {
   const [showBrandLogo, setShowBrandLogo] = React.useState(true);
@@ -23,11 +24,15 @@ const Header = () => {
     <header>
       <SNav>
         <SNavRow>
-          <SHelloMessage>{'>'} helllo</SHelloMessage>
+          <Link href="/" passHref>
+            <SHelloMessage>{">"} helllo</SHelloMessage>
+          </Link>
           {showBrandLogo && (
-            <SBrandLogoWrapper>
-              <SBrandLogoImage src={owlImage} alt="Komic Logo" />
-            </SBrandLogoWrapper>
+            <Link href="/" passHref>
+              <SBrandLogoWrapper>
+                <SBrandLogoImage src={owlImage} alt="Komic Logo" />
+              </SBrandLogoWrapper>
+            </Link>
           )}
           <SHamburgerMenuWrapper onClick={toggleMenu}>
             <SHamburgerIcon

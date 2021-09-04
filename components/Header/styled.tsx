@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import Image from "next/image";
+import styled from "styled-components";
 
 export const SNav = styled.nav`
   display: flex;
@@ -25,6 +25,10 @@ export const SBrandLogoWrapper = styled.div`
   width: 80px;
   left: 50%;
   transform: translateX(-50%) translateY(33%);
+
+  :hover {
+    cursor: pointer;
+  }
 
   @media (min-width: 768px) {
     width: 100px;
@@ -117,11 +121,15 @@ export const SSpecialButton = styled.button`
 export const SHelloMessage = styled.div`
   position: relative;
 
+  :hover {
+    cursor: pointer;
+  }
+
   :after {
     position: absolute;
     top: 6px;
     right: -15px;
-    content: '';
+    content: "";
     display: inline-block;
     width: 12px;
     height: 21px;

@@ -1,21 +1,17 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
-import { Spacer } from 'components/Spacer';
 import {
-  SPostPreviewArticle,
-  SPostPreviewTitleWrapper,
-  SPostPreviewH1,
-  SPostSubheaderSpan,
-  SPostCreatedDiv,
+  SA,
   SPostPreviewMainwWrapper,
   SPostPreviewP,
   SPostPreviewBottomWrapper,
   STagSpan,
-  SReadMoreLink,
+  SReadMoreSpan,
   STagLabelWrapper,
   STagsWrapper,
-} from './styled';
+} from "./styled";
+import Post from "components/Post/Post";
 
 type Props = {
   id: number;
@@ -23,33 +19,29 @@ type Props = {
 
 const PostPreview = ({ id }: Props) => {
   return (
-    <SPostPreviewArticle>
-      <SPostPreviewTitleWrapper>
-        <SPostPreviewH1>Blog Title</SPostPreviewH1>
-        <SPostSubheaderSpan>Sample Blog subtitle</SPostSubheaderSpan>
-        <Spacer space={0.2} />
-        <SPostCreatedDiv>Posted on Thursday 29, 2021</SPostCreatedDiv>
-      </SPostPreviewTitleWrapper>
-      <SPostPreviewMainwWrapper>
-        <SPostPreviewP>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book.
-        </SPostPreviewP>
-      </SPostPreviewMainwWrapper>
-      <SPostPreviewBottomWrapper>
-        <STagLabelWrapper>Tags:</STagLabelWrapper>
-        <STagsWrapper>
-          <STagSpan>Typescript</STagSpan>
-          <STagSpan>React</STagSpan>
-          <STagSpan>testing</STagSpan>
-        </STagsWrapper>
-        <Link href="#" passHref>
-          <SReadMoreLink>[Read more...]</SReadMoreLink>
-        </Link>
-      </SPostPreviewBottomWrapper>
-    </SPostPreviewArticle>
+    <Link href={`/post/${id}`} passHref>
+      <SA>
+        <Post>
+          <SPostPreviewMainwWrapper>
+            <SPostPreviewP>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book.
+            </SPostPreviewP>
+          </SPostPreviewMainwWrapper>
+          <SPostPreviewBottomWrapper>
+            <STagLabelWrapper>Tags:</STagLabelWrapper>
+            <STagsWrapper>
+              <STagSpan>Typescript</STagSpan>
+              <STagSpan>React</STagSpan>
+              <STagSpan>testing</STagSpan>
+            </STagsWrapper>
+            <SReadMoreSpan>[Read more...]</SReadMoreSpan>
+          </SPostPreviewBottomWrapper>
+        </Post>
+      </SA>
+    </Link>
   );
 };
 

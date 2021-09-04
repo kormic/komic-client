@@ -1,4 +1,21 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+import { SPostArticle } from "components/Post/styled";
+
+export const SA = styled.a`
+  :hover {
+    cursor: pointer;
+  }
+
+  > ${SPostArticle} {
+    cursor: pointer !important;
+  }
+
+  :hover h1,
+  :hover span {
+    color: rgba(251, 191, 36, 1);
+  }
+`;
 
 export const SPostPreviewBottomWrapper = styled.div`
   display: block;
@@ -25,55 +42,11 @@ export const STagSpan = styled.span`
   color: rgba(251, 191, 36, 0.6);
 `;
 
-export const SReadMoreLink = styled.a`
+export const SReadMoreSpan = styled.span`
   display: inline-block;
   font-weight: 500;
   flex: 1;
   text-align: right; ;
-`;
-
-export const SPostPreviewArticle = styled.article`
-  padding: 2.1875rem 0;
-  border-bottom: 1px solid #eee;
-
-  :hover {
-    cursor: pointer;
-  }
-
-  :hover h1,
-  :hover a {
-    color: rgba(251, 191, 36, 1);
-  }
-
-  :last-child {
-    border-bottom: 0;
-  }
-`;
-
-export const SPostPreviewTitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.25rem;
-`;
-
-export const SPostPreviewH1 = styled.h1`
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-top: 0;
-  margin-bottom: 0;
-`;
-
-export const SPostSubheaderSpan = styled.span`
-  margin: 0;
-  font-size: 1.3rem;
-  font-weight: 300;
-`;
-
-export const SPostCreatedDiv = styled.div`
-  color: #808080;
-  font-style: italic;
-  font-family: 'Roboto', 'Times New Roman', serif;
 `;
 
 export const SPostPreviewMainwWrapper = styled.div`
