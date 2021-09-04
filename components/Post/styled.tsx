@@ -4,6 +4,13 @@ export const SPostArticle = styled.article`
   padding: 2.1875rem 0;
   border-bottom: 1px solid #eee;
 
+  > pre {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(251, 191, 36);
+    overflow: auto;
+  }
+
   :hover {
     cursor: default;
   }
