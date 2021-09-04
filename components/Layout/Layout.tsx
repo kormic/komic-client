@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { Footer } from "components/Footer";
 import { Header } from "../Header";
-import { MainTitle } from "../MainTitle";
 
 const SSection = styled.section`
   height: 100%;
@@ -10,7 +9,7 @@ const SSection = styled.section`
   flex-direction: column;
 `;
 
-const SMain = styled.main`
+export const SMain = styled.main`
   flex-grow: 1;
   width: 100%;
   max-width: 1140px;
@@ -25,7 +24,6 @@ const SMain = styled.main`
 const Layout: React.FC = ({ children }) => (
   <SSection>
     <Header />
-    <MainTitle />
     <SMain>{children}</SMain>
     <Footer />
   </SSection>

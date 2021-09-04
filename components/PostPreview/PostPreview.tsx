@@ -17,7 +17,11 @@ import {
   STagsWrapper,
 } from './styled';
 
-const PostPreview = () => {
+type Props = {
+  id: number;
+};
+
+const PostPreview = ({ id }: Props) => {
   return (
     <SPostPreviewArticle>
       <SPostPreviewTitleWrapper>
