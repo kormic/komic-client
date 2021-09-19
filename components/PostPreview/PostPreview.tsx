@@ -11,17 +11,24 @@ import {
   STagLabelWrapper,
   STagsWrapper,
 } from "./styled";
-import Post from "components/Post/Post";
+import PostHeaderSection from "components/Post/PostHeaderSection";
+import { SArticle } from "components/Post/styled";
+import { PostDTO } from "dto/PostDTO";
 
 type Props = {
-  id: number;
+  post: PostDTO;
 };
 
-const PostPreview = ({ id }: Props) => {
+const PostPreview = ({ post }: Props) => {
   return (
-    <Link href={`/post/${id}`} passHref>
+    <Link href={`/post/${post.id}`} passHref>
       <SA>
-        <Post>
+        <SArticle>
+          <PostHeaderSection
+            title={post.title}
+            shortDescription={post.short_body}
+            createdAt={post.createdAt}
+          />
           <SPostPreviewMainwWrapper>
             <SPostPreviewP>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -39,7 +46,7 @@ const PostPreview = ({ id }: Props) => {
             </STagsWrapper>
             <SReadMoreSpan>[Read more...]</SReadMoreSpan>
           </SPostPreviewBottomWrapper>
-        </Post>
+        </SArticle>
       </SA>
     </Link>
   );

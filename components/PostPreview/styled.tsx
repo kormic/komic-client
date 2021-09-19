@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-import { SPostArticle } from "components/Post/styled";
+import { SArticle } from "components/Post/styled";
 
 export const SA = styled.a`
   :hover {
     cursor: pointer;
   }
 
-  > ${SPostArticle} {
+  > ${SArticle} {
     cursor: pointer !important;
   }
 
@@ -36,6 +36,7 @@ export const STagsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
+  flex-wrap: wrap;
 `;
 
 export const STagSpan = styled.span`

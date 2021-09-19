@@ -7,7 +7,7 @@ export const SNav = styled.nav`
   font-weight: 800;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  height: 3rem;
+  height: 6rem;
 `;
 
 export const SNavRow = styled.div`

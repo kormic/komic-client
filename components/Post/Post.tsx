@@ -1,24 +1,28 @@
 import React from "react";
 
-import {
-  SPostArticle,
-  SPostTitleWrapper,
-  SPostH1,
-  SPostSubheaderSpan,
-  SPostCreatedDiv,
-} from "components/Post/styled";
-import { Spacer } from "components/Spacer";
+import parse from "html-react-parser";
 
-const Post: React.FC = ({ children }) => (
-  <SPostArticle>
-    <SPostTitleWrapper>
-      <SPostH1>Blog Title</SPostH1>
-      <SPostSubheaderSpan>Sample Blog subtitle</SPostSubheaderSpan>
-      <Spacer space={0.2} />
-      <SPostCreatedDiv>Posted on Thursday 29, 2021</SPostCreatedDiv>
-    </SPostTitleWrapper>
-    {children}
-  </SPostArticle>
-);
+import { SArticle } from "components/Post/styled";
+import PostHeaderSection from "./PostHeaderSection";
+import { PostDTO } from "dto/PostDTO";
+
+type Props = {
+  post: PostDTO;
+};
+
+const Post: React.FC<Props> = ({ post }) => {
+  const parsedPost = post && parse(post.body);
+
+  return (
+    <SArticle>
+      <PostHeaderSection
+        title={post.title}
+        shortDescription={post.short_body}
+        createdAt={post.createdAt}
+      />
+      {parsedPost}
+    </SArticle>
+  );
+};
 
 export default Post;

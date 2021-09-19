@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SMainTitleSection = styled.section`
-  margin: 3rem 0 0 0;
+  margin: 0;
   text-align: center;
 `;
 
