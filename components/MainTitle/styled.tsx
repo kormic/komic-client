@@ -14,6 +14,10 @@ export const SMainTitleH1 = styled.h1`
   @media (min-width: 768px) {
     word-spacing: 0.4rem;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const SMainTitleHr = styled.hr`

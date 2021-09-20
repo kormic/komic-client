@@ -27,6 +27,10 @@ export const SArticle = styled.article`
   :last-child {
     border-bottom: 0;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const SPostTitleWrapper = styled.div`
@@ -43,12 +47,20 @@ export const SPostH1 = styled.h1`
   margin-bottom: 0;
   text-transform: capitalize;
   word-wrap: break-word;
+
+  @media (max-width: 1024px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const SPostSubheaderSpan = styled.span`
   margin: 0;
   font-size: 1.3rem;
   font-weight: 300;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
 `;
 
 export const SPostCreatedDiv = styled.div`

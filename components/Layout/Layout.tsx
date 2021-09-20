@@ -14,10 +14,10 @@ export const SMain = styled.main`
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 1rem;
 
   @media (min-width: 1024px) {
-    padding: 0 10rem;
+    padding: 0 5rem;
   }
 `;
 
