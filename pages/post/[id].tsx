@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import { PostPage } from "screens/posts";
 import { PostDTO } from "dto/PostDTO";
-import { getPostById } from "pages/api/postAPI/postAPI";
+import { getPostById } from "../../adapters/posts";
 
 export const getServerSideProps: GetServerSideProps<{ post: PostDTO }> =
   async ({ query: { id } }) => {

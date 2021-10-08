@@ -26,11 +26,11 @@ const Header = () => {
     <header>
       <SNav>
         <SNavRow>
-          <Link href='/' passHref shallow={true}>
+          <Link href='/posts' passHref shallow={true}>
             <SHelloMessage>{">"} helllo</SHelloMessage>
           </Link>
           {showBrandLogo && (
-            <Link href='/' passHref shallow={true}>
+            <Link href='/posts' passHref shallow={true}>
               <SBrandLogoWrapper>
                 <SBrandLogoImage src={owlImage} alt='Komic Logo' />
               </SBrandLogoWrapper>

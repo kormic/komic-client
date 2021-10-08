@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CategoryDTO } from "dto/CategoryDTO";
 import { SNavList, SNavListItem, SHintSpan, SSpecialButton } from "./styled";
 
@@ -7,24 +9,36 @@ type Props = {
 };
 
 const Menu = ({ isMobile = false, categories }: Props) => {
-  const MenuItem: React.FC<{ hint: string }> = ({ children, hint }) => (
+  // eslint-disable-next-line react/display-name
+  const MenuItem: React.FC<{ category: CategoryDTO }> = ({
+    children,
+    category,
+  }) => (
     <SNavListItem>
-      {children} {isMobile && <SHintSpan>{hint}</SHintSpan>}
+      <Link
+        key={category.id}
+        href={`/posts?categoryId=${category.id}&offser=0&limit=6`}
+        passHref
+      >
+        <a>
+          {children} {isMobile && <SHintSpan>{category.description}</SHintSpan>}
+        </a>
+      </Link>
     </SNavListItem>
   );
 
   return (
     <SNavList>
       {categories.map((category: CategoryDTO) => (
-        <MenuItem key={category.id} hint={category.description}>
+        <MenuItem key={category.id} category={category}>
           {category.name}
         </MenuItem>
       ))}
-      {isMobile ? (
+      {/* {isMobile ? (
         <SNavListItem>logout</SNavListItem>
       ) : (
         <SSpecialButton>logout</SSpecialButton>
-      )}
+      )} */}
     </SNavList>
   );
 };

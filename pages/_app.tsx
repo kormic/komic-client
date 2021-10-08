@@ -4,7 +4,7 @@ import { NextComponentType, NextPageContext } from "next";
 import { CategoriesProvider } from "context/CategoriesContext";
 import { CategoryDTO } from "dto/CategoryDTO";
 import { createGlobalStyle } from "styled-components";
-import { getCategories } from "./api/categoriesAPI/categoriesAPI";
+import { getCategories } from "../adapters/categories";
 
 const GlobalStyle = createGlobalStyle`
 html,

@@ -102,6 +102,7 @@ export const SHintSpan = styled.span`
   color: rgb(251, 191, 36);
   font-style: italic;
   font-weight: 300;
+  white-space: nowrap;
 `;
 
 export const SSpecialButton = styled.button`
