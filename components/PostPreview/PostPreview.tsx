@@ -14,6 +14,7 @@ import {
 import PostHeaderSection from "components/Post/PostHeaderSection";
 import { SArticle } from "components/Post/styled";
 import { PostDTO } from "dto/PostDTO";
+import { endpoints } from "adapters/endpoints";
 
 type Props = {
   post: PostDTO;
@@ -21,7 +22,7 @@ type Props = {
 
 const PostPreview = ({ post }: Props) => {
   return (
-    <Link href={`/post/${post.id}`} passHref>
+    <Link href={`${endpoints.POST.URL}/${post.id}`} passHref>
       <SA>
         <SArticle>
           <PostHeaderSection

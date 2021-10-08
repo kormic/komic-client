@@ -15,6 +15,7 @@ import {
   SNavRow,
   SHelloMessage,
 } from "./styled";
+import { endpoints } from "adapters/endpoints";
 
 const Header = () => {
   const { categories } = useCategories();
@@ -26,11 +27,11 @@ const Header = () => {
     <header>
       <SNav>
         <SNavRow>
-          <Link href='/posts' passHref shallow={true}>
+          <Link href={endpoints.POSTS.URL} passHref shallow={true}>
             <SHelloMessage>{">"} helllo</SHelloMessage>
           </Link>
           {showBrandLogo && (
-            <Link href='/posts' passHref shallow={true}>
+            <Link href={endpoints.POSTS.URL} passHref shallow={true}>
               <SBrandLogoWrapper>
                 <SBrandLogoImage src={owlImage} alt='Komic Logo' />
               </SBrandLogoWrapper>

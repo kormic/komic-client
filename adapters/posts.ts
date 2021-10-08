@@ -1,4 +1,5 @@
 import { PostDTO } from "dto/PostDTO";
+import { endpoints } from "./endpoints";
 
 export const getPosts = async ({
     categoryId,
@@ -9,7 +10,8 @@ export const getPosts = async ({
     offset: number;
     limit: number;
 }) => {
-    const res = await fetch(`${process.env.API_URL}/posts?categoryId=${categoryId}&offset=${offset}&limit=${limit}`);
+    const { CATEGORYID, OFFSET, LIMIT } = endpoints.POSTS.PARAMS
+    const res = await fetch(`${process.env.API_URL}${endpoints.POSTS.URL}?${CATEGORYID}=${categoryId}&${OFFSET}=${offset}&${LIMIT}=${limit}`);
     const data = await res.json();
 
     // TODO-BE: Set correctly the status when fetching a post fails
@@ -19,7 +21,7 @@ export const getPosts = async ({
 };
 
 export const getPostById = async (id: string) => {
-    const res = await fetch(`${process.env.API_URL}posts/${id}`);
+    const res = await fetch(`${process.env.API_URL}${endpoints.POSTS.URL}/${id}`);
     const data = await res.json();
 
     // TODO-BE: Set correctly the status when fetching a post fails

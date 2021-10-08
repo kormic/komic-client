@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { CategoryDTO } from "dto/CategoryDTO";
 import { SNavList, SNavListItem, SHintSpan, SSpecialButton } from "./styled";
+import { endpoints } from "adapters/endpoints";
 
 type Props = {
   isMobile?: boolean;
@@ -17,7 +18,7 @@ const Menu = ({ isMobile = false, categories }: Props) => {
     <SNavListItem>
       <Link
         key={category.id}
-        href={`/posts?categoryId=${category.id}&offser=0&limit=6`}
+        href={`${endpoints.POSTS.URL}?${endpoints.POSTS.PARAMS.CATEGORYID}=${category.id}&${endpoints.POSTS.PARAMS.OFFSET}=0&${endpoints.POSTS.PARAMS.LIMIT}=6`}
         passHref
       >
         <a>
