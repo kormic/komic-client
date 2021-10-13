@@ -7,7 +7,7 @@ export const SNav = styled.nav`
   font-weight: 800;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  height: 6rem;
+  height: 6.5rem;
 `;
 
 export const SNavRow = styled.div`
@@ -17,7 +17,7 @@ export const SNavRow = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.41rem 0.9375rem;
-  background-color: #eaeaea;
+  background-color: ${({ theme }) => theme.headerBg};
 `;
 
 export const SBrandLogoWrapper = styled.div`
@@ -36,6 +36,7 @@ export const SBrandLogoWrapper = styled.div`
 `;
 
 export const SBrandLogoImage = styled(Image)`
+  background-color: ${({ theme }) => theme.accent};
   border-radius: 9999px;
 `;
 
@@ -52,25 +53,41 @@ export const SNavListItem = styled.li`
   font-size: 1rem;
 
   :hover {
-    color: rgba(251, 191, 36, 1);
+    color: ${({ theme }) => theme.accent};
+  }
+`;
+
+export const SThemeToggleWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+
+  :hover {
+    cursor: pointer;
   }
 `;
 
 export const SMenuWrapper = styled.div`
   display: none;
 
+  :hover {
+    cursor: pointer;
+  }
+
   @media (min-width: 1024px) {
     display: flex;
+    align-items: center;
   }
 `;
 
 export const SMenuWrapperMobile = styled.div`
-  background-color: rgba(243, 244, 246, 1);
+  background-color: ${({ theme }) => theme.headerBg};
   border-radius: 0.5rem;
   padding-left: 0.9375rem;
   position: absolute;
-  width: 100%;
-  top: 3rem;
+  width: 98%;
+  left: 1%;
+  top: 3.2rem;
 
   @media (min-width: 1024px) {
     display: none;
@@ -84,7 +101,7 @@ export const SHamburgerMenuWrapper = styled.button`
   background-color: rgba(252, 211, 77, 1);
 
   :hover {
-    background-color: rgba(251, 191, 36, 1);
+    background-color: ${({ theme }) => theme.accent};
   }
 
   @media (min-width: 1024px) {
@@ -95,6 +112,15 @@ export const SHamburgerMenuWrapper = styled.button`
 export const SHamburgerIcon = styled.svg`
   height: 1rem;
   width: 1rem;
+`;
+
+export const SSunIcon = styled.svg`
+  height: 30px;
+  width: 40px;
+
+  :hover {
+    fill: ${({ theme }) => theme.accent};
+  }
 `;
 
 export const SHintSpan = styled.span`
@@ -115,7 +141,7 @@ export const SSpecialButton = styled.button`
   background-color: rgba(252, 211, 77, 1);
 
   :hover {
-    background-color: rgba(251, 191, 36, 1);
+    background-color: ${({ theme }) => theme.accent};
   }
 `;
 
@@ -134,7 +160,7 @@ export const SHelloMessage = styled.div`
     display: inline-block;
     width: 12px;
     height: 21px;
-    background-color: rgba(251, 191, 36, 1);
+    background-color: ${({ theme }) => theme.accent};
     animation: blink 1s linear infinite alternate;
   }
 

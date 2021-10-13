@@ -13,7 +13,7 @@ export const SA = styled.a`
 
   :hover h1,
   :hover span {
-    color: rgba(251, 191, 36, 1);
+    color: ${({ theme }) => theme.accent};
   }
 `;
 
@@ -40,7 +40,7 @@ export const STagsWrapper = styled.div`
 `;
 
 export const STagSpan = styled.span`
-  color: rgba(251, 191, 36, 0.6);
+  color: ${({ theme }) => theme.accent};
 `;
 
 export const SReadMoreSpan = styled.span`
@@ -60,7 +60,7 @@ export const SPostPreviewP = styled.p`
   margin-bottom: 0.7rem;
   font-size: 1rem;
   font-weight: 300;
-  color: #5a5a5a;
+  color: ${({ theme }) => theme.articleColor};
   line-height: 1.2rem;
   text-align: justify;
 `;

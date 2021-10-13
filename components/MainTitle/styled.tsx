@@ -26,7 +26,7 @@ export const SMainTitleHr = styled.hr`
   border-width: 0.25rem;
   border-radius: 0.1875rem;
   border: 0;
-  border-top: 5px solid rgb(251, 191, 36);
+  border-top: 5px solid ${({ theme }) => theme.accent};
 `;
 
 export const SMainTitleSubHeadSpan = styled.span`

@@ -64,7 +64,7 @@ export const SPostSubheaderSpan = styled.span`
 `;
 
 export const SPostCreatedDiv = styled.div`
-  color: #808080;
+  color: ${({ theme }) => theme.subtitleColor};
   font-style: italic;
   font-family: "Roboto", "Times New Roman", serif;
   word-wrap: break-word;

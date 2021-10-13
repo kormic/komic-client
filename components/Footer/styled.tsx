@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SFooterWrapper = styled.footer`
   display: flex;
@@ -6,7 +6,7 @@ export const SFooterWrapper = styled.footer`
   align-items: center;
   min-height: 12rem;
   justify-content: center;
-  background-color: #eaeaea;
+  background-color: ${({ theme }) => theme.footerBg};
 `;
 
 export const SFooterRowWrapper = styled.div<{
@@ -15,12 +15,12 @@ export const SFooterRowWrapper = styled.div<{
   display: flex;
   font-size: 0.7rem;
   gap: 1rem;
-  ${({ marginY }) => `margin: ${marginY ?? '1rem'} 0;`}
+  ${({ marginY }) => `margin: ${marginY ?? "1rem"} 0;`}
 `;
 
 export const SFooterMadeWithLoveWrapper = styled.div`
   padding: 0.2rem 0.5rem;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bodyBg};
   border: 1px solid rgb(251, 191, 36);
   border-radius: 4px;
 `;
@@ -29,7 +29,7 @@ export const SSocialIcon = styled.svg`
   width: 24px;
 
   :hover {
-    color: rgba(251, 191, 36, 1);
+    color: ${({ theme }) => theme.accent};
     cursor: pointer;
   }
 `;
