@@ -1,5 +1,8 @@
 import type { AppProps } from "next/app";
 import { NextComponentType, NextPageContext } from "next";
+import Router from "next/router";
+import React from "react";
+import { start as startLoader, done as stopLoader } from "nprogress";
 
 import { GlobalStyles } from "../themeConfig";
 import { CategoriesProvider } from "context/CategoriesContext";
@@ -7,20 +10,22 @@ import { CategoryDTO } from "dto/CategoryDTO";
 import { getCategories } from "../adapters/categories";
 import { ThemeContextProvider } from "context/ThemeContext";
 
-function MyApp({
+Router.events.on("routeChangeStart", startLoader);
+Router.events.on("routeChangeComplete", stopLoader);
+Router.events.on("routeChangeError", stopLoader);
+
+const MyApp = ({
   Component,
   pageProps,
   categories,
-}: AppProps & { categories: CategoryDTO[] }) {
-  return (
-    <ThemeContextProvider>
-      <GlobalStyles />
-      <CategoriesProvider initialCategories={categories}>
-        <Component {...pageProps} />
-      </CategoriesProvider>
-    </ThemeContextProvider>
-  );
-}
+}: AppProps & { categories: CategoryDTO[] }) => (
+  <ThemeContextProvider>
+    <GlobalStyles />
+    <CategoriesProvider initialCategories={categories}>
+      <Component {...pageProps} />
+    </CategoriesProvider>
+  </ThemeContextProvider>
+);
 
 MyApp.getInitialProps = async ({
   Component,
