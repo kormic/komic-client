@@ -48,12 +48,13 @@ export const SNavList = styled.ul`
   }
 `;
 
-export const SNavListItem = styled.li`
+export const SNavListItem = styled.li<{ active: boolean }>`
   cursor: pointer;
   font-size: 1rem;
+  ${({ theme, active }) => active && `color: ${theme.accent};`};
 
   :hover {
-    color: ${({ theme }) => theme.accent};
+    color: ${({ theme, active }) => !active && theme.subtitleColor};
   }
 `;
 
@@ -124,7 +125,8 @@ export const SSunIcon = styled.svg`
 `;
 
 export const SHintSpan = styled.span`
-  font-size: 0.75rem;
+  margin-left: 4px;
+  font-size: 0.65rem;
   color: rgb(251, 191, 36);
   font-style: italic;
   font-weight: 300;
