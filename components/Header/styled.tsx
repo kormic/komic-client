@@ -51,6 +51,8 @@ export const SNavList = styled.ul`
 export const SNavListItem = styled.li<{ active: boolean }>`
   cursor: pointer;
   font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
   ${({ theme, active }) => active && `color: ${theme.accent};`};
 
   :hover {
