@@ -3,6 +3,7 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { PostsList } from "screens/postsList";
 import { getCategories } from "adapters/categories";
 import { getPosts } from "adapters/posts";
+import { Seo } from "components/Seo";
 
 export const getServerSideProps = async ({
   query,
@@ -26,7 +27,15 @@ export const getServerSideProps = async ({
 const Posts = ({
   posts,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <PostsList posts={posts ?? []} />;
+  return (
+    <>
+      <Seo
+        title='Posts about web and mobile development'
+        description='Posts about web and mobile development'
+      />
+      <PostsList posts={posts ?? []} />
+    </>
+  );
 };
 
 export default Posts;

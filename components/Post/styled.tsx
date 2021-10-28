@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const SArticle = styled.article`
-  padding: 2.1875rem 0px
+  padding: 2.1875rem 0px;
   border-bottom: 1px solid #eee;
   border: 1px solid transparent;
   border-radius: 0.7rem;
   padding: 2rem;
   background-color: #eaeaea66;
   margin-bottom: 3rem;
+  word-break: break-word;
 
   > pre {
     padding: 10px 20px;

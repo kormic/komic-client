@@ -59,7 +59,7 @@ const Header = () => {
               />
             </SSunIcon>
           </SThemeToggleWrapper>
-          <SHamburgerMenuWrapper onClick={toggleMenu}>
+          <SHamburgerMenuWrapper aria-label='Menu button' onClick={toggleMenu}>
             <SHamburgerIcon
               xmlns='http://www.w3.org/2000/svg'
               fill='none'

@@ -22,7 +22,7 @@ const MenuItem: React.FC<{ category: CategoryDTO; isActive: boolean }> = ({
         href={`${endpoints.POSTS.URL}?${endpoints.POSTS.PARAMS.CATEGORYID}=${category.id}&${endpoints.POSTS.PARAMS.OFFSET}=0&${endpoints.POSTS.PARAMS.LIMIT}=6`}
         passHref
       >
-        <a>{children} </a>
+        <>{children}</>
       </Link>
     </SNavListItem>
   );
