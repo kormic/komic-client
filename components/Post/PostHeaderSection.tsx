@@ -19,7 +19,7 @@ const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => (
     <SPostSubheaderSpan>{shortDescription}</SPostSubheaderSpan>
     <Spacer space={0.2} />
     <SPostCreatedDiv>
-      Posted on {new Date(createdAt).toDateString()}
+      Δημοσιεύθηκε στις {new Date(createdAt).toLocaleDateString()}
     </SPostCreatedDiv>
   </SPostTitleWrapper>
 );

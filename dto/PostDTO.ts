@@ -1,3 +1,8 @@
+type Tag = {
+    id: number;
+    name: string;
+}
+
 export type PostDTO = {
     id: number;
     title: string;
@@ -7,5 +12,6 @@ export type PostDTO = {
     likes: number;
     createdAt: string;
     imageUrl: string;
+    tags: Tag[];
     categoryId: number;
 };

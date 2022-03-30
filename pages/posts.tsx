@@ -12,7 +12,7 @@ export const getServerSideProps = async ({
   const [firstCategory] = categories;
 
   const { posts } = await getPosts({
-    categoryId: query.categoryId ?? firstCategory.id,
+    categoryId: +(query.categoryId ?? firstCategory.id),
     offset: +(query.offset ?? 0),
     limit: +(query.limit ?? 6),
   });

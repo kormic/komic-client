@@ -5,22 +5,25 @@ import { PostDTO } from "dto/PostDTO";
 import { getPostById } from "../../adapters/posts";
 import { Seo } from "components/Seo";
 
-export const getServerSideProps: GetServerSideProps<{ post: PostDTO }> =
-  async ({ query: { id } }) => {
-    const props = await getPostById(String(id));
+export const getServerSideProps: GetServerSideProps<{
+  post: PostDTO | undefined;
+}> = async ({ query: { id } }) => {
+  const {
+    props: { post },
+  } = await getPostById(String(id));
 
-    return props
-      ? (props as { props: { post: PostDTO } })
-      : {
-          notFound: true,
-        };
-  };
+  return post
+    ? { props: { post } }
+    : {
+        notFound: true,
+      };
+};
 
 const PostById = ({
   post,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => (
   <>
-    <Seo title={post.title} description={post.short_body} />
+    <Seo title={post?.title} description={post?.short_body} />
     <PostPage post={post} />
   </>
 );

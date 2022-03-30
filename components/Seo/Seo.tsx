@@ -2,14 +2,14 @@ import Head from "next/head";
 import React from "react";
 
 type Props = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   author?: string;
 };
 
 const Seo = ({
-  title,
-  description,
+  title = "",
+  description = "",
   author = "Komic | Kornelakis Michael",
 }: Props) => {
   return (

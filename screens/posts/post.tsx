@@ -6,7 +6,7 @@ import { Layout } from "components/Layout";
 import { SMain } from "components/Layout/Layout";
 import { PostDTO } from "dto/PostDTO";
 
-const PostPage = ({ post }: { post: PostDTO }) => {
+const PostPage = ({ post }: { post?: PostDTO }) => {
   const router = useRouter();
 
   useEffect(() => {

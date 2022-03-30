@@ -26,6 +26,7 @@ export const SPostPreviewBottomWrapper = styled.div`
   }
 `;
 
+// NOTE: Probably deprecated
 export const STagLabelWrapper = styled.div`
   @media (min-width: 768px) {
     margin-right: 0.1rem;
@@ -34,13 +35,18 @@ export const STagLabelWrapper = styled.div`
 
 export const STagsWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   gap: 0.5rem;
   flex-wrap: wrap;
 `;
 
 export const STagSpan = styled.span`
   color: ${({ theme }) => theme.accent};
+  padding: 0.25rem;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 0.375rem;
+  background-color: whitesmoke;
+  font-size: 0.75rem;
 `;
 
 export const SReadMoreSpan = styled.span`
