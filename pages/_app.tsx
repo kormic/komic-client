@@ -9,6 +9,8 @@ import { CategoriesProvider } from "context/CategoriesContext";
 import { CategoryDTO } from "dto/CategoryDTO";
 import { getCategories } from "../adapters/categories";
 import { ThemeContextProvider } from "context/ThemeContext";
+import { AuthProvider } from "context/AuthContext";
+import { PortalContextProvider } from "context/PortalContext";
 
 Router.events.on("routeChangeStart", startLoader);
 Router.events.on("routeChangeComplete", stopLoader);
@@ -21,9 +23,13 @@ const MyApp = ({
 }: AppProps & { categories: CategoryDTO[] }) => (
   <ThemeContextProvider>
     <GlobalStyles />
-    <CategoriesProvider initialCategories={categories}>
-      <Component {...pageProps} />
-    </CategoriesProvider>
+    <AuthProvider>
+      <PortalContextProvider>
+        <CategoriesProvider initialCategories={categories}>
+          <Component {...pageProps} />
+        </CategoriesProvider>
+      </PortalContextProvider>
+    </AuthProvider>
   </ThemeContextProvider>
 );
 

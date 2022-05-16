@@ -143,7 +143,7 @@ export const SSpecialButton = styled.button`
   cursor: pointer;
   border: 1px solid #000;
   border-radius: 0.25rem;
-  padding: 0.25rem;
+  padding: 0.1rem 1rem;
   font-size: 1rem;
   background-color: rgba(252, 211, 77, 1);
 
@@ -179,4 +179,10 @@ export const SHelloMessage = styled.div`
       opacity: 1;
     }
   }
+`;
+
+export const SSeparator = styled.div<{ isMobile: boolean }>`
+  height: ${({ isMobile }) => (isMobile ? "1px;" : "1em;")}
+  border: ${({ theme }) => `1px solid ${theme.bodyColor}`};
+  opacity: 0.7;
 `;

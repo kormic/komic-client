@@ -3,8 +3,8 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: "/api/:slug*",
-        destination: `${process.env.API_URL}:slug*`,
+        source: "/api/v1/:slug*",
+        destination: `${process.env.API_URL}/:slug*`,
       },
     ];
   },

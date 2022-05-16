@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
+import { Portal } from "components/Portal";
+import { usePortal } from "context/PortalContext";
 import { Footer } from "components/Footer";
 import { Header } from "../Header";
+import { Login } from "components/Login";
 
 const SSection = styled.section`
   height: 100%;
@@ -21,12 +24,21 @@ export const SMain = styled.main`
   }
 `;
 
-const Layout: React.FC = ({ children }) => (
-  <SSection>
-    <Header />
-    {children}
-    <Footer />
-  </SSection>
-);
+const Layout: React.FC = ({ children }) => {
+  const { isVisible, setIsVisible } = usePortal();
+
+  return (
+    <SSection>
+      <Header />
+      {children}
+      <Footer />
+      {isVisible && (
+        <Portal onOutsideClick={() => setIsVisible?.(false)}>
+          <Login />
+        </Portal>
+      )}
+    </SSection>
+  );
+};
 
 export default Layout;

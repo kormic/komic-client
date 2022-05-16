@@ -2,19 +2,22 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { CategoryDTO } from "dto/CategoryDTO";
-import { SNavList, SNavListItem, SHintSpan, SSpecialButton } from "./styled";
+import {
+  SNavList,
+  SNavListItem,
+  SHintSpan,
+  SSpecialButton,
+  SSeparator,
+} from "./styled";
 import { endpoints } from "adapters/endpoints";
+import { useAuthContext } from "context/AuthContext";
+import { usePortal } from "context/PortalContext";
+import { useTheme } from "styled-components";
 
-type Props = {
-  isMobile?: boolean;
-  categories: CategoryDTO[];
-};
-
-const MenuItem: React.FC<{ category: CategoryDTO; isActive: boolean }> = ({
-  children,
-  category,
-  isActive,
-}) => {
+const MenuItem: React.FC<{
+  category: CategoryDTO;
+  isActive: boolean;
+}> = ({ children, category, isActive }) => {
   return (
     <SNavListItem active={isActive}>
       <Link
@@ -28,28 +31,72 @@ const MenuItem: React.FC<{ category: CategoryDTO; isActive: boolean }> = ({
   );
 };
 
+type Props = {
+  isMobile?: boolean;
+  categories: CategoryDTO[];
+};
+
 const Menu = ({ isMobile = false, categories }: Props) => {
   const router = useRouter();
+  const { auth, logoutUser } = useAuthContext();
+  const { setIsVisible } = usePortal();
+  const theme = useTheme();
+  const { isLoggedIn } = auth ?? { isLoggedIn: false };
+
+  const handleLogin = async () => {
+    setIsVisible?.(true);
+  };
+
+  const handleLogout = () => {
+    logoutUser?.();
+  };
+
+  const handleAuthClick = async () => {
+    isLoggedIn ? handleLogout() : await handleLogin();
+  };
 
   return (
     <SNavList>
-      {categories.map((category: CategoryDTO, index: number) => {
-        const isActive = !router.query.categoryId
-          ? index === 0
-          : Number(router.query.categoryId) === category.id;
-
+      {categories.map((category: CategoryDTO) => {
         return (
-          <MenuItem key={category.id} category={category} isActive={isActive}>
-            {category.name}
+          <MenuItem
+            key={category.id}
+            category={category}
+            isActive={router.query?.categoryId === String(category.id)}
+          >
+            {category.name.toLowerCase()}
             {isMobile && <SHintSpan>{category.description}</SHintSpan>}
           </MenuItem>
         );
       })}
-      {/* {isMobile ? (
-        <SNavListItem>logout</SNavListItem>
+      {isLoggedIn && (
+        <>
+          <SSeparator isMobile={isMobile} />
+          <SNavListItem active={router.pathname === "/my-posts"}>
+            <Link href='/my-posts' passHref>
+              <a>my posts</a>
+            </Link>
+          </SNavListItem>
+          <SNavListItem
+            active={false}
+            onMouseOver={(e) =>
+              e.currentTarget.style.setProperty("color", theme.accent)
+            }
+            onMouseOut={(e) => e.currentTarget.style.removeProperty("color")}
+          >
+            profile
+          </SNavListItem>
+        </>
+      )}
+      {isMobile ? (
+        <SNavListItem active onClick={handleAuthClick}>
+          {isLoggedIn ? "logout" : "login"}
+        </SNavListItem>
       ) : (
-        <SSpecialButton>logout</SSpecialButton>
-      )} */}
+        <SSpecialButton onClick={handleAuthClick}>
+          {isLoggedIn ? "logout" : "login"}
+        </SSpecialButton>
+      )}
     </SNavList>
   );
 };
