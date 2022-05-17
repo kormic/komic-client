@@ -1,20 +1,20 @@
+import { LOCALSTORAGE_TOKEN_KEY } from "context/AuthContext";
 import { endpoints } from "./endpoints";
 
-export const authenticateUser = async (callFromClient: boolean, params: { username: string, password: string }) => {
+export const getUserProfile = async (callFromClient: boolean) => {
     try {
-        const url = `${callFromClient ? '/api/v1' : process.env.API_URL}${endpoints.USERS.AUTH.URL}`
+        const url = `${callFromClient ? '/api/v1' : process.env.API_URL}${endpoints.USERS.PROFILE.URL}`
         const res = await fetch(url, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)}`
             },
-            method: 'POST',
-            body: JSON.stringify(params)
         });
         const data = await res.json();
 
         if (res.status === 200) {
             return {
-                token: data.token
+                userProfile: data.user
             }
         }
 

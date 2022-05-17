@@ -8,7 +8,7 @@ const MyPosts = () => {
     <Layout>
       <MainTitle />
       <div style={{ flex: 1 }}>
-        Here will be the list of the user&apo;s posts
+        Here will be the list of the user&apos;s posts
       </div>
     </Layout>
   );

@@ -1,13 +1,24 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 const PortalContext = createContext<{
-  isVisible?: boolean;
-  setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoginVisible?: boolean;
+  setIsLoginVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+  isProfileVisible?: boolean;
+  setIsProfileVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }>({});
 
 const PortalContextProvider = ({ children }: { children: ReactNode }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const value = useMemo(() => ({ isVisible, setIsVisible }), [isVisible]);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [isProfileVisible, setIsProfileVisible] = useState(false);
+  const value = useMemo(
+    () => ({
+      isLoginVisible,
+      setIsLoginVisible,
+      isProfileVisible,
+      setIsProfileVisible,
+    }),
+    [isLoginVisible, isProfileVisible]
+  );
 
   return (
     <PortalContext.Provider value={value}>{children}</PortalContext.Provider>

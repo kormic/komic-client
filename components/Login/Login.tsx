@@ -19,7 +19,7 @@ const validateFormData = (data: { username: string; password: string }) => {
 };
 
 const Login = () => {
-  const { setIsVisible } = usePortal();
+  const { setIsLoginVisible } = usePortal();
   const { loginUser } = useAuthContext();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +37,7 @@ const Login = () => {
 
       if (receivedToken) {
         loginUser?.(res?.token);
-        setIsVisible?.(false);
+        setIsLoginVisible?.(false);
       } else if (res?.errorMessage) {
         setError(res?.errorMessage);
       }

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-const LOCALSTORAGE_TOKEN_KEY = "token";
+export const LOCALSTORAGE_TOKEN_KEY = "token";
 
 type Auth = { isLoggedIn: boolean; token?: string };
 

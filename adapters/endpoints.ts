@@ -1,6 +1,11 @@
 export const endpoints = {
-    AUTH: {
-        URL: '/users/authenticate'
+    USERS: {
+        AUTH: {
+            URL: '/users/authenticate'
+        },
+        PROFILE: {
+            URL: '/users/profile'
+        }
     },
     CATEGORIES: {
         URL: '/categories'
