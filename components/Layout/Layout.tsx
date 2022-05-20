@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import { Footer } from "components/Footer";
@@ -32,4 +33,4 @@ const Layout: React.FC = ({ children }) => {
   );
 };
 
-export default withPortals(Layout);
+export default withPortals<{ children: React.ReactNode }>(Layout);
