@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const SWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex-basis: 80%;
+
+  @media (min-width: 768px) {
+    flex-basis: auto;
+  }
 `;
 
 export const SBackButton = styled.div`
