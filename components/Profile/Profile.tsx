@@ -3,6 +3,7 @@ import { start as startLoader, done as stopLoader } from "nprogress";
 
 import { getUserProfile } from "adapters/user";
 import { ProfileWrapper, KeyValueWrapper, ValueWrapper } from "./styled";
+import { ColorSpan } from "components/ColorSpan";
 
 const REGISTRATION_DATE_KEY = "registration_date";
 
@@ -32,7 +33,13 @@ const Profile = () => {
       {Object.entries(userProfile).map(([key, value]) => (
         <KeyValueWrapper key={key}>
           <div>{key}: </div>
-          <ValueWrapper>{handleValue(key, value)}</ValueWrapper>
+          {value.length > 0 ? (
+            <ValueWrapper>{handleValue(key, value)}</ValueWrapper>
+          ) : (
+            <ColorSpan style={{ fontStyle: "italic" }} color='gray'>
+              N/A
+            </ColorSpan>
+          )}
         </KeyValueWrapper>
       ))}
     </ProfileWrapper>

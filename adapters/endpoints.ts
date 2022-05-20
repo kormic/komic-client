@@ -3,6 +3,9 @@ export const endpoints = {
         AUTH: {
             URL: '/users/authenticate'
         },
+        REGISTER: {
+            URL: '/users/register'
+        },
         PROFILE: {
             URL: '/users/profile'
         }

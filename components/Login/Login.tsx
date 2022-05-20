@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { start as startLoader, done as stopLoader } from "nprogress";
+import React from "react";
+import styled from "styled-components";
 
-import { SSpecialButton } from "components/Header/styled";
-import { ColorSpan } from "components/ColorSpan";
 import { authenticateUser } from "adapters/auth";
 import { useAuthContext } from "context/AuthContext";
 import { usePortal } from "context/PortalContext";
-import { SLogin, SLoginForm, SInput, SSpan, SA } from "./styled";
+import { SBackButton, SWrapper, SUserInput } from "../UserForm/styled";
+import { UserForm } from "components/UserForm/UserForm";
+import { AuthDTO } from "dto/AuthDTO";
 
 const validateFormData = (data: { username: string; password: string }) => {
   if (data.username.length === 0) {
@@ -18,67 +18,70 @@ const validateFormData = (data: { username: string; password: string }) => {
   } else return null;
 };
 
+const SUserSpan = styled.span`
+  padding: 0.5rem 0rem;
+  font-size: 0.8rem;
+`;
+
+const SUserLink = styled.a`
+  color: ${({ theme }) => theme.accent};
+  cursor: pointer;
+`;
+
+const Footer = ({ onClick }: { onClick: () => void }) => (
+  <SUserSpan>
+    Don&apos;t have an account? Click{" "}
+    <SUserLink type='button' onClick={onClick}>
+      here
+    </SUserLink>
+  </SUserSpan>
+);
+
 const Login = () => {
-  const { setIsLoginVisible } = usePortal();
+  const { setIsLoginVisible, setIsRegistrationVisible } = usePortal();
   const { loginUser } = useAuthContext();
-  const [formData, setFormData] = useState({ username: "", password: "" });
-  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const errorMessage = validateFormData(formData);
+  const onSubmit = async (
+    data: AuthDTO,
+    setError: React.Dispatch<React.SetStateAction<string | null>>
+  ) => {
+    const res = await authenticateUser(true, data);
+    const receivedToken = Boolean(res?.token);
 
-    if (errorMessage) {
-      setError(errorMessage);
-    } else {
-      startLoader();
-      const res = await authenticateUser(true, formData);
-      const receivedToken = Boolean(res?.token);
-
-      if (receivedToken) {
-        loginUser?.(res?.token);
-        setIsLoginVisible?.(false);
-      } else if (res?.errorMessage) {
-        setError(res?.errorMessage);
-      }
-
-      stopLoader();
+    if (receivedToken) {
+      loginUser?.(res.token);
+      setIsLoginVisible?.(false);
+    } else if (res?.errorMessage) {
+      setError(res?.errorMessage);
     }
   };
 
+  const onFooterClick = () => {
+    setIsLoginVisible?.(false);
+    setIsRegistrationVisible?.(true);
+  };
+
   return (
-    <SLogin>
-      <SLoginForm>
-        <SInput
-          name='username'
-          placeholder='username'
-          value={formData.username}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, username: e.target.value }))
-          }
-        />
-        <SInput
-          name='password'
-          type='password'
-          placeholder='password'
-          value={formData.password}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, password: e.target.value }))
-          }
-        />
-        {error && (
-          <ColorSpan color='red' style={{ fontSize: "small" }}>
-            {error}
-          </ColorSpan>
-        )}
-        <SSpan>
-          Don&apos;t have an account? Click <SA>here</SA>
-        </SSpan>
-        <SSpecialButton type='submit' onClick={(e) => handleSubmit(e)}>
-          Login
-        </SSpecialButton>
-      </SLoginForm>
-    </SLogin>
+    <SWrapper>
+      <SBackButton
+        onClick={() => {
+          setIsLoginVisible?.(false);
+        }}
+      >
+        Close
+      </SBackButton>
+      <UserForm
+        submitButtonTitle='Login'
+        initialFormData={{ username: "", password: "" }}
+        footer={() => <Footer onClick={onFooterClick} />}
+        validateFormData={validateFormData}
+        onSubmit={onSubmit}
+      >
+        <SUserInput name='username' placeholder='username' />
+        <SUserInput name='password' type='password' placeholder='password' />
+      </UserForm>
+    </SWrapper>
   );
 };
+
 export default Login;

@@ -1,6 +1,7 @@
+import { AuthDTO } from "dto/AuthDTO";
 import { endpoints } from "./endpoints";
 
-export const authenticateUser = async (callFromClient: boolean, params: { username: string, password: string }) => {
+export const authenticateUser = async (callFromClient: boolean, params: AuthDTO) => {
     try {
         const url = `${callFromClient ? '/api/v1' : process.env.API_URL}${endpoints.USERS.AUTH.URL}`
         const res = await fetch(url, {

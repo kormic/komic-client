@@ -1,6 +1,21 @@
 import styled from "styled-components";
 
-export const SLogin = styled.div`
+export const SWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SBackButton = styled.div`
+  font-size: 0.8rem;
+  text-align: left;
+  background-color: transparent;
+  color: ${({ theme }) => theme.articleColor};
+  border: none;
+  padding: 0.5rem 0rem;
+  cursor: pointer;
+`;
+
+export const SUserFormWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,13 +26,13 @@ export const SLogin = styled.div`
   border-radius: 0.5em;
 `;
 
-export const SLoginForm = styled.form`
+export const SUserForm = styled.form`
   display: flex;
   flex-direction: column;
   flex: 1;
 `;
 
-export const SInput = styled.input`
+export const SUserInput = styled.input`
   margin-bottom: 0.2em;
   border-radius: 0.2rem;
   padding: 0.2rem;
@@ -28,14 +43,4 @@ export const SInput = styled.input`
     outline: none;
     border: 1px solid #000;
   }
-`;
-
-export const SSpan = styled.span`
-  padding: 0.5rem 0rem;
-  font-size: 0.8rem;
-`;
-
-export const SA = styled.a`
-  color: ${({ theme }) => theme.accent};
-  cursor: pointer;
 `;
