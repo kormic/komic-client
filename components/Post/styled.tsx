@@ -13,7 +13,7 @@ export const SArticle = styled.article`
   > pre {
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.8);
-    color: rgb(251, 191, 36);
+    color: ${({ theme }) => theme.accent};
     overflow: auto;
   }
 

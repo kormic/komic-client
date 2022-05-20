@@ -132,7 +132,7 @@ export const SSunIcon = styled.svg`
 export const SHintSpan = styled.span`
   margin-left: 4px;
   font-size: 0.65rem;
-  color: rgb(251, 191, 36);
+  color: ${({ theme }) => theme.accent};
   font-style: italic;
   font-weight: 300;
   white-space: nowrap;

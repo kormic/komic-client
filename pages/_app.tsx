@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { NextComponentType, NextPageContext } from "next";
 import Router from "next/router";
+import Head from "next/head";
 import React from "react";
 import { start as startLoader, done as stopLoader } from "nprogress";
 
@@ -26,7 +27,15 @@ const MyApp = ({
     <AuthProvider>
       <PortalContextProvider>
         <CategoriesProvider initialCategories={categories}>
-          <Component {...pageProps} />
+          <>
+            <Head>
+              <meta
+                name='viewport'
+                content='width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0'
+              />
+            </Head>
+            <Component {...pageProps} />
+          </>
         </CategoriesProvider>
       </PortalContextProvider>
     </AuthProvider>

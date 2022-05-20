@@ -21,7 +21,7 @@ export const SFooterRowWrapper = styled.div<{
 export const SFooterMadeWithLoveWrapper = styled.div`
   padding: 0.2rem 0.5rem;
   background-color: ${({ theme }) => theme.bodyBg};
-  border: 1px solid rgb(251, 191, 36);
+  border: 1px solid ${({ theme }) => theme.accent};
   border-radius: 4px;
 `;
 

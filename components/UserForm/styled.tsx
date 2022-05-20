@@ -43,4 +43,14 @@ export const SUserInput = styled.input`
     outline: none;
     border: 1px solid #000;
   }
+
+  :disabled {
+    color: ${({ theme }) => theme.articleColor};
+    cursor: not-allowed;
+  }
+
+  ::placeholder {
+    color: ${({ theme }) => theme.accent};
+    opacity: 1; /* Firefox */
+  }
 `;

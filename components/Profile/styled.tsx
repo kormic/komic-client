@@ -10,6 +10,9 @@ export const ProfileWrapper = styled.div`
   }
 `;
 
+// NOTE: Not used due to the fact the profile
+// is a UserForm now. Keep them for a while before
+// to make sure they are not needed anymore
 export const KeyValueWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -20,3 +23,4 @@ export const ValueWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
+// END NOTE

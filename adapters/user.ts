@@ -1,5 +1,6 @@
 import { LOCALSTORAGE_TOKEN_KEY } from "context/AuthContext";
 import { RegisterUserDTO } from "dto/RegisterUserDTO";
+import { UserProfileDTO } from "dto/UserProfileDTO";
 import { endpoints } from "./endpoints";
 
 export const getUserProfile = async (callFromClient: boolean) => {
@@ -15,7 +16,7 @@ export const getUserProfile = async (callFromClient: boolean) => {
 
         if (res.status === 200) {
             return {
-                userProfile: data.user
+                userProfile: data.user as UserProfileDTO
             }
         }
 
