@@ -51,6 +51,7 @@ export const SUserInput = styled.input`
 
   :disabled {
     color: ${({ theme }) => theme.articleColor};
+    opacity: 1; /* iOS */
     cursor: not-allowed;
   }
 
