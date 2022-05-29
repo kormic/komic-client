@@ -6,3 +6,7 @@ export const isValidEmail = (value: string) => {
 
     return emailRegex.test(value);
 };
+
+export const LOCALSTORAGE_TOKEN_KEY = "token";
+
+export const getToken = () => localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);

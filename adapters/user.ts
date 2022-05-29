@@ -1,6 +1,6 @@
-import { LOCALSTORAGE_TOKEN_KEY } from "context/AuthContext";
 import { RegisterUserDTO } from "dto/RegisterUserDTO";
 import { UserProfileDTO } from "dto/UserProfileDTO";
+import { getToken } from "shared/utils";
 import { endpoints } from "./endpoints";
 
 export const getUserProfile = async (callFromClient: boolean) => {
@@ -9,7 +9,7 @@ export const getUserProfile = async (callFromClient: boolean) => {
         const res = await fetch(url, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `JWT ${localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)}`
+                'Authorization': `JWT ${getToken()}`
             },
         });
         const data = await res.json();

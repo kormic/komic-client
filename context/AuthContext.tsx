@@ -7,10 +7,25 @@ import {
   useMemo,
   useState,
 } from "react";
+import { decode, JwtPayload } from "jsonwebtoken";
 
-export const LOCALSTORAGE_TOKEN_KEY = "token";
+import { getToken, LOCALSTORAGE_TOKEN_KEY } from "shared/utils";
 
 type Auth = { isLoggedIn: boolean; token?: string };
+
+const getTokenExpirationDate = () => {
+  const token = getToken();
+
+  if (token !== null) {
+    const decodedToken = decode(token, { complete: true });
+    const expiration = (decodedToken?.payload as JwtPayload).exp;
+    const expirationDate = new Date((expiration ?? 0) * 1000);
+
+    return expirationDate;
+  }
+
+  return null;
+};
 
 const AuthContext = createContext<{
   auth?: Auth;
@@ -25,12 +40,6 @@ const AuthProvider = ({
   children: ReactNode;
   initialIsLoggedIn?: boolean;
 }) => {
-  useEffect(() => {
-    setAuth({
-      isLoggedIn: Boolean(localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)),
-    });
-  }, []);
-
   const [auth, setAuth] = useState<Auth>({
     isLoggedIn: initialIsLoggedIn,
     token: undefined,
@@ -58,6 +67,19 @@ const AuthProvider = ({
       token: undefined,
     });
   }, [setAuth]);
+
+  useEffect(() => {
+    const now = new Date();
+    const tokenExpirationDate = getTokenExpirationDate();
+
+    if (tokenExpirationDate && tokenExpirationDate > now) {
+      setAuth({
+        isLoggedIn: Boolean(getToken()),
+      });
+    } else {
+      logoutUser();
+    }
+  }, [logoutUser]);
 
   const value = { auth, loginUser, logoutUser };
 
