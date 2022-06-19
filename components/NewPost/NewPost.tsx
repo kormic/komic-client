@@ -6,7 +6,9 @@ import React, {
 } from "react";
 
 import { Editor } from "@tinymce/tinymce-react";
-import { EditorEvent } from "public/tinymce/tinymce";
+// TODO: Check Investigate on this a bit. Check further down
+// above the handleEditorChange function
+// import { EditorEvent } from "public/tinymce/tinymce";
 
 import { useCategories } from "context/CategoriesContext";
 import { Spacer } from "components/Spacer";
@@ -60,11 +62,14 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
     adjustTitleTextareaHeight(e.target.scrollHeight);
   };
 
-  const handleEditorChange = (
-    e: EditorEvent<{
-      target: Editor;
-    }>
-  ) => {
+  // TODO: The type of the event here was
+  // EditorEvent<{
+  //  target: Editor;
+  // }>
+  // but the import is failing in vercel.
+  // I will try with any to see if it builds
+  // successfully on vercel and then will investigate on this.
+  const handleEditorChange = (e: any) => {
     const editorContent = e.target.getContent();
     const shortBody = e.target.getBody().textContent.slice(0, 90);
 
