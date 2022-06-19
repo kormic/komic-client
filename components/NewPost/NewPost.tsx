@@ -21,9 +21,9 @@ import {
   SNewPostCategorylabel,
   SNewPostCategoryCheckbox,
 } from "./styled";
-import { getUserIdFromToken, TEXTAREA_HEIGHT } from "shared/utils";
 import { addPost } from "adapters/posts";
 import { AddPostDTO } from "dto/AddPostDTO";
+import { getUserIdFromToken, TEXTAREA_HEIGHT } from "shared/utils";
 
 const now = new Date();
 
