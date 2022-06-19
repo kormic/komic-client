@@ -1,13 +1,16 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+export const SHeader = styled.header`
+  flex: 0 0 6.5em;
+`;
+
 export const SNav = styled.nav`
   display: flex;
   flex-direction: column;
   font-weight: 800;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  height: 6.5rem;
 `;
 
 export const SNavRow = styled.div`
@@ -138,14 +141,19 @@ export const SHintSpan = styled.span`
   white-space: nowrap;
 `;
 
-export const SSpecialButton = styled.button`
+export const SSpecialButton = styled.button<{
+  backgroundColor?: string;
+  color?: string;
+}>`
   display: block;
   cursor: pointer;
   border: 1px solid #000;
   border-radius: 0.25rem;
   padding: 0.1rem 1rem;
   font-size: 1rem;
-  background-color: rgba(252, 211, 77, 1);
+  ${({ color }) => color && `color: ${color};`};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor ?? theme.specialButtonColor};
 
   :hover {
     background-color: ${({ theme }) => theme.accent};

@@ -3,14 +3,18 @@ import {
   SMainTitleH1,
   SMainTitleSubHeadSpan,
   SMainTitleHr,
-} from './styled';
+} from "./styled";
 
-const MainTitle = () => (
+const MainTitle = ({
+  title = "Coding is an art",
+  subheader,
+}: {
+  title?: string;
+  subheader?: string;
+}) => (
   <SMainTitleSection>
-    <SMainTitleH1>Coding is an art</SMainTitleH1>
-    <SMainTitleSubHeadSpan>
-      clean code always looks like it was written by someone who cares
-    </SMainTitleSubHeadSpan>
+    <SMainTitleH1>{title}</SMainTitleH1>
+    {subheader && <SMainTitleSubHeadSpan>{subheader}</SMainTitleSubHeadSpan>}
     <SMainTitleHr />
   </SMainTitleSection>
 );

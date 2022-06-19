@@ -8,6 +8,7 @@ export const lightTheme: DefaultTheme = {
   accent: 'rgba(251, 191, 36, 1)',
   articleColor: '#5a5a5a',
   subtitleColor: '#808080',
+  specialButtonColor: 'rgba(252, 211, 77, 1)'
 }
 
 export const darkTheme: DefaultTheme = {
@@ -18,6 +19,7 @@ export const darkTheme: DefaultTheme = {
   accent: 'rgba(251, 191, 36, 1)',
   articleColor: '#FFF',
   subtitleColor: '#d2d6dc',
+  specialButtonColor: 'rgba(252, 211, 77, 1)'
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme }>`

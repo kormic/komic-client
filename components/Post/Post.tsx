@@ -8,16 +8,17 @@ import { PostDTO } from "dto/PostDTO";
 
 type Props = {
   post: PostDTO;
+  showDescription: boolean;
 };
 
-const Post: React.FC<Props> = ({ post }) => {
+const Post: React.FC<Props> = ({ post, showDescription }) => {
   const parsedPost = post && parse(post.body);
 
   return (
     <SArticle>
       <PostHeaderSection
         title={post.title}
-        shortDescription={post.short_body}
+        shortDescription={showDescription ? post.short_body : ""}
         createdAt={post.createdAt}
       />
       {parsedPost}

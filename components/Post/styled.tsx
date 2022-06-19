@@ -7,7 +7,7 @@ export const SArticle = styled.article`
   border-radius: 0.7rem;
   padding: 2rem;
   background-color: #eaeaea66;
-  margin-bottom: 3rem;
+  margin-bottom: 1em;
   word-break: break-word;
 
   > pre {
@@ -42,7 +42,7 @@ export const SPostTitleWrapper = styled.div`
 `;
 
 export const SPostH1 = styled.h1`
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   font-weight: 800;
   margin-top: 0;
   margin-bottom: 0;
@@ -56,17 +56,13 @@ export const SPostH1 = styled.h1`
 
 export const SPostSubheaderSpan = styled.span`
   margin: 0;
-  font-size: 1.3rem;
   font-weight: 300;
-
-  @media (max-width: 1024px) {
-    font-size: 1rem;
-  }
 `;
 
 export const SPostCreatedDiv = styled.div`
   color: ${({ theme }) => theme.subtitleColor};
-  font-style: italic;
+  font-weight: 600;
   font-family: "Roboto", "Times New Roman", serif;
   word-wrap: break-word;
+  border-bottom: 1px dashed;
 `;

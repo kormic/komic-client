@@ -3,55 +3,57 @@ import React from "react";
 
 import {
   SA,
-  SPostPreviewMainwWrapper,
-  SPostPreviewP,
   SPostPreviewBottomWrapper,
   STagSpan,
-  SReadMoreSpan,
-  STagLabelWrapper,
   STagsWrapper,
 } from "./styled";
 import PostHeaderSection from "components/Post/PostHeaderSection";
 import { SArticle } from "components/Post/styled";
-import { PostDTO } from "dto/PostDTO";
+import { PostDTO, Tag } from "dto/PostDTO";
 import { endpoints } from "adapters/endpoints";
+import { useCategories } from "context/CategoriesContext";
 
 type Props = {
   post: PostDTO;
+  showTags?: boolean;
 };
 
-const PostPreview = ({ post }: Props) => (
-  <Link href={`${endpoints.POST.URL}/${post.id}`} passHref>
-    <SA>
-      <SArticle>
-        <PostHeaderSection
-          title={post.title}
-          shortDescription={post.short_body}
-          createdAt={post.createdAt}
-        />
-        <SPostPreviewMainwWrapper>
-          <SPostPreviewP>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book.
-          </SPostPreviewP>
-        </SPostPreviewMainwWrapper>
-        <SPostPreviewBottomWrapper>
-          {post.tags.length > 0 && (
-            <>
-              <STagsWrapper>
-                {post.tags.map((tag) => (
-                  <STagSpan key={tag.id}>{tag.name}</STagSpan>
-                ))}
-              </STagsWrapper>
-            </>
+const Tags = ({ tags, categoryId }: { tags: Tag[]; categoryId: number }) => {
+  const { categories } = useCategories();
+
+  const getCategoryById = (id: number) =>
+    categories.filter((cat) => cat.id === id)[0].name;
+
+  return tags.length > 0 ? (
+    <STagsWrapper>
+      {tags.map((tag) => (
+        <STagSpan key={tag.id}>#{tag.name}</STagSpan>
+      ))}
+    </STagsWrapper>
+  ) : (
+    <STagSpan>#{getCategoryById(categoryId)}</STagSpan>
+  );
+};
+
+const PostPreview = ({ post, showTags = true }: Props) => {
+  return (
+    <Link href={`${endpoints.POST.URL}/${post.id}`} passHref>
+      <SA>
+        <SArticle>
+          <PostHeaderSection
+            title={post.title}
+            shortDescription={post.short_body}
+            createdAt={post.createdAt}
+          />
+          {showTags && (
+            <SPostPreviewBottomWrapper>
+              <Tags tags={post.tags} categoryId={post.categoryId} />
+            </SPostPreviewBottomWrapper>
           )}
-          <SReadMoreSpan>[Read more...]</SReadMoreSpan>
-        </SPostPreviewBottomWrapper>
-      </SArticle>
-    </SA>
-  </Link>
-);
+        </SArticle>
+      </SA>
+    </Link>
+  );
+};
 
 export default PostPreview;

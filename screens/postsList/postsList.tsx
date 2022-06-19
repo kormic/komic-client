@@ -8,7 +8,7 @@ import { EmptyPostsList } from "components/EmptyPostsList";
 const PostsList = ({ posts }: { posts: PostDTO[] }) => {
   return (
     <Layout>
-      <MainTitle />
+      <MainTitle subheader='clean code always looks like it was written by someone who cares' />
       <SMain>
         {posts.length > 0 ? (
           posts.map((post) => <PostPreview key={post.id} post={post} />)

@@ -22,7 +22,7 @@ const MenuItem: React.FC<{
     <SNavListItem active={isActive}>
       <Link
         key={category.id}
-        href={`${endpoints.POSTS.URL}?${endpoints.POSTS.PARAMS.CATEGORYID}=${category.id}&${endpoints.POSTS.PARAMS.OFFSET}=0&${endpoints.POSTS.PARAMS.LIMIT}=6`}
+        href={`${endpoints.POSTS.ALL.URL}?${endpoints.POSTS.ALL.PARAMS.CATEGORYID}=${category.id}&${endpoints.POSTS.ALL.PARAMS.OFFSET}=0&${endpoints.POSTS.ALL.PARAMS.LIMIT}=6`}
         passHref
       >
         <a>{children}</a>
@@ -37,6 +37,7 @@ type Props = {
 };
 
 const Menu = ({ isMobile = false, categories }: Props) => {
+  const [firstCategory] = categories;
   const router = useRouter();
   const { auth, logoutUser } = useAuthContext();
   const { setIsLoginVisible, setIsProfileVisible } = usePortal();
@@ -55,6 +56,24 @@ const Menu = ({ isMobile = false, categories }: Props) => {
     isLoggedIn ? handleLogout() : await handleLogin();
   };
 
+  const setActiveMenuItem = (categoryId: number) => {
+    const clickedOnCategory =
+      router.query?.categoryId &&
+      router.pathname === "/posts" &&
+      router.query?.categoryId === String(categoryId);
+
+    const clickedOnLogo =
+      !router.query?.categoryId &&
+      router.pathname === "/posts" &&
+      categoryId === firstCategory.id;
+
+    if (clickedOnCategory || clickedOnLogo) {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <>
       <SNavList>
@@ -63,7 +82,7 @@ const Menu = ({ isMobile = false, categories }: Props) => {
             <MenuItem
               key={category.id}
               category={category}
-              isActive={router.query?.categoryId === String(category.id)}
+              isActive={setActiveMenuItem(category.id)}
             >
               {category.name.toLowerCase()}
               {isMobile && <SHintSpan>{category.description}</SHintSpan>}

@@ -17,7 +17,7 @@ const PostPage = ({ post }: { post?: PostDTO }) => {
 
   return (
     <Layout>
-      <SMain>{post && <Post post={post} />}</SMain>
+      <SMain>{post && <Post post={post} showDescription={false} />}</SMain>
     </Layout>
   );
 };

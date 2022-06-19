@@ -1,6 +1,7 @@
-type Tag = {
+export type Tag = {
     id: number;
     name: string;
+    description: string;
 }
 
 export type PostDTO = {

@@ -14,11 +14,24 @@ export const endpoints = {
         URL: '/categories'
     },
     POSTS: {
-        URL: '/posts',
-        PARAMS: {
-            CATEGORYID: 'categoryId',
-            LIMIT: 'limit',
-            OFFSET: 'offset'
+        ALL: {
+            URL: '/posts',
+            PARAMS: {
+                CATEGORYID: 'categoryId',
+                LIMIT: 'limit',
+                OFFSET: 'offset'
+            }
+        },
+        BY_USERID: {
+            URL: '/posts/user',
+            PARAMS: {
+                CATEGORYID: 'categoryId',
+                LIMIT: 'limit',
+                OFFSET: 'offset'
+            }
+        },
+        ADD: {
+            URL: '/posts/add'
         }
     },
     POST: {

@@ -14,6 +14,7 @@ import {
   SMenuWrapper,
   SMenuWrapperMobile,
   SNavRow,
+  SHeader,
   SHelloMessage,
   SSunIcon,
   SThemeToggleWrapper,
@@ -25,19 +26,22 @@ const Header = () => {
   const { theme, toggleTheme } = useThemeContext();
   const defaultTheme = useTheme();
   const { categories } = useCategories();
+  const [firstCategory] = categories;
   const [showBrandLogo, setShowBrandLogo] = React.useState(true);
 
   const toggleMenu = () => setShowBrandLogo((prev) => !prev);
 
+  const firstCategoryHref = `${endpoints.POSTS.ALL.URL}?${endpoints.POSTS.ALL.PARAMS.CATEGORYID}=${firstCategory.id}&${endpoints.POSTS.ALL.PARAMS.OFFSET}=0&${endpoints.POSTS.ALL.PARAMS.LIMIT}=6`;
+
   return (
-    <header>
+    <SHeader>
       <SNav>
         <SNavRow>
-          <Link href={endpoints.POSTS.URL} passHref shallow={true}>
+          <Link href={firstCategoryHref} passHref>
             <SHelloMessage>{">"} helllo</SHelloMessage>
           </Link>
           {showBrandLogo && (
-            <Link href={endpoints.POSTS.URL} passHref shallow={true}>
+            <Link href={firstCategoryHref} passHref>
               <SBrandLogoWrapper>
                 <SBrandLogoImage src={owlImage} alt='Komic Logo' />
               </SBrandLogoWrapper>
@@ -84,7 +88,7 @@ const Header = () => {
           </SMenuWrapperMobile>
         )}
       </SNav>
-    </header>
+    </SHeader>
   );
 };
 

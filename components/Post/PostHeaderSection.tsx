@@ -1,5 +1,7 @@
 import { Spacer } from "components/Spacer";
 import React from "react";
+
+import { MAX_DESCRIPTION_LENGTH, monthNames, truncate } from "shared/utils";
 import {
   SPostCreatedDiv,
   SPostH1,
@@ -15,12 +17,20 @@ type Props = {
 
 const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => (
   <SPostTitleWrapper>
-    <SPostH1>{title}</SPostH1>
-    <SPostSubheaderSpan>{shortDescription}</SPostSubheaderSpan>
-    <Spacer space={0.2} />
     <SPostCreatedDiv>
-      Δημοσιεύθηκε στις {new Date(createdAt).toLocaleDateString()}
+      <span style={{ fontWeight: 600 }}>Komic &bull; </span>
+      {monthNames[new Date(createdAt).getMonth()] +
+        " " +
+        new Date(createdAt).getDate()}
     </SPostCreatedDiv>
+    <SPostH1>{title}</SPostH1>
+    <SPostSubheaderSpan>
+      {shortDescription.length > 0 &&
+      shortDescription.length < MAX_DESCRIPTION_LENGTH
+        ? shortDescription + "..."
+        : truncate(shortDescription, MAX_DESCRIPTION_LENGTH)}
+    </SPostSubheaderSpan>
+    {shortDescription.length > 0 && <Spacer space={1.5} />}
   </SPostTitleWrapper>
 );
 

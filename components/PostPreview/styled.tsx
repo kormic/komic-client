@@ -11,8 +11,7 @@ export const SA = styled.a`
     cursor: pointer !important;
   }
 
-  :hover h1,
-  :hover span {
+  :hover h1 {
     color: ${({ theme }) => theme.accent};
   }
 `;
@@ -23,13 +22,6 @@ export const SPostPreviewBottomWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
     font-size: 0.9rem;
-  }
-`;
-
-// NOTE: Probably deprecated
-export const STagLabelWrapper = styled.div`
-  @media (min-width: 768px) {
-    margin-right: 0.1rem;
   }
 `;
 
@@ -47,6 +39,14 @@ export const STagSpan = styled.span`
   border-radius: 0.375rem;
   background-color: whitesmoke;
   font-size: 0.75rem;
+`;
+
+// NOTE: Eveything from this line and one is
+// probably deprecated
+export const STagLabelWrapper = styled.div`
+  @media (min-width: 768px) {
+    margin-right: 0.1rem;
+  }
 `;
 
 export const SReadMoreSpan = styled.span`

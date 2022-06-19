@@ -1,4 +1,6 @@
+import { AddPostDTO } from "dto/AddPostDTO";
 import { PostDTO } from "dto/PostDTO";
+import { getToken } from "shared/utils";
 import { endpoints } from "./endpoints";
 
 export const getPosts = async ({
@@ -10,8 +12,8 @@ export const getPosts = async ({
     offset: number;
     limit: number;
 }) => {
-    const { CATEGORYID, OFFSET, LIMIT } = endpoints.POSTS.PARAMS
-    const res = await fetch(`${process.env.API_URL}${endpoints.POSTS.URL}?${CATEGORYID}=${categoryId}&${OFFSET}=${offset}&${LIMIT}=${limit}`);
+    const { CATEGORYID, OFFSET, LIMIT } = endpoints.POSTS.ALL.PARAMS
+    const res = await fetch(`${process.env.API_URL}${endpoints.POSTS.ALL.URL}?${CATEGORYID}=${categoryId}&${OFFSET}=${offset}&${LIMIT}=${limit}`);
     const data = await res.json();
 
     if (!res.ok) {
@@ -19,13 +21,13 @@ export const getPosts = async ({
     }
 
     return {
-        posts: data.posts as PostDTO[], // TODO-BE: remove the redundant first level key (post)
+        posts: data.posts as PostDTO[],
     };
 };
 
 export const getPostById = async (id: string) => {
     try {
-        const res = await fetch(`${process.env.API_URL}${endpoints.POSTS.URL}/${id}`);
+        const res = await fetch(`${process.env.API_URL}${endpoints.POSTS.ALL.URL}/${id}`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -45,3 +47,66 @@ export const getPostById = async (id: string) => {
         };
     }
 };
+
+export const getPostsByUserId = async (callFromClient: boolean, id: string, params = {
+    categoryId: 1,
+    offset: 6,
+    limit: 6
+}) => {
+    try {
+        const { CATEGORYID, OFFSET, LIMIT } = endpoints.POSTS.BY_USERID.PARAMS
+        const res = await fetch(`${callFromClient ? '/api/v1' : process.env.API_URL}${endpoints.POSTS.BY_USERID.URL}/${id}?${CATEGORYID}=${params.categoryId}&${OFFSET}=${params.offset}&${LIMIT}=${params.limit}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${getToken()}`
+            },
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw Error(data.errorMessage)
+        }
+
+        return {
+            posts: data.posts as PostDTO[],
+        };
+    } catch (error) {
+        return {
+            props: {
+                posts: undefined
+            }
+        };
+    }
+};
+
+export const addPost = async (callFromClient: boolean, params: AddPostDTO) => {
+    try {
+        const res = await fetch(`${callFromClient ? '/api/v1' : process.env.API_URL}${endpoints.POSTS.ADD.URL}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${getToken()}`
+            },
+            body: JSON.stringify(params),
+            method: 'POST',
+        })
+        const data = await res.json();
+
+        // TODO: The status here should be 201. When backend is ready
+        // change this
+        if (res.status === 200) {
+            return {
+                success: data.success as boolean,
+                message: data.msg as string,
+                id: data.userId as number
+            }
+        }
+
+        throw data;
+    } catch (error) {
+        return {
+            props: {
+                errorMessage: (error as { errorMessage: string }).errorMessage
+            }
+        };
+    }
+}
