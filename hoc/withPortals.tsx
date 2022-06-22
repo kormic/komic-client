@@ -7,30 +7,24 @@ import { usePortal } from "context/PortalContext";
 export const withPortals =
   <T,>(WrappedComponent: React.FC<T>) =>
   (props: T) => {
-    const {
-      isLoginVisible,
-      setIsLoginVisible,
-      isRegistrationVisible,
-      setIsRegistrationVisible,
-      isProfileVisible,
-      setIsProfileVisible,
-    } = usePortal();
+    const { isLoginVisible, isRegistrationVisible, isProfileVisible } =
+      usePortal();
 
     const ComponentWithPortals = (
       <>
         <WrappedComponent {...props} />
         {isLoginVisible && (
-          <Portal onOutsideClick={() => setIsLoginVisible?.(false)}>
+          <Portal>
             <Login />
           </Portal>
         )}
         {isRegistrationVisible && (
-          <Portal onOutsideClick={() => setIsRegistrationVisible?.(false)}>
+          <Portal>
             <Registration />
           </Portal>
         )}
         {isProfileVisible && (
-          <Portal onOutsideClick={() => setIsProfileVisible?.(false)}>
+          <Portal>
             <Profile />
           </Portal>
         )}
