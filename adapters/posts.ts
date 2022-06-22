@@ -91,9 +91,7 @@ export const addPost = async (callFromClient: boolean, params: AddPostDTO) => {
         })
         const data = await res.json();
 
-        // TODO: The status here should be 201. When backend is ready
-        // change this
-        if (res.status === 200) {
+        if (res.status === 201) {
             return {
                 success: data.success as boolean,
                 message: data.msg as string,
