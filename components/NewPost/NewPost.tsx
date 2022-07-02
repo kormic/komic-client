@@ -105,9 +105,13 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
     } else if (post.title.length < 3) {
       alert("Title is too short. It should be at least 3 characters");
     } else {
-      const { success } = await addPost(true, post);
+      const { success, props } = await addPost(true, post);
 
-      return success;
+      if (props?.errorMessage) {
+        alert(props?.errorMessage);
+      } else {
+        return success;
+      }
     }
   }, [post]);
 
