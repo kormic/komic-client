@@ -20,6 +20,7 @@ export const SNewPostTitleWrapper = styled.div`
   flex: 1 0 60%;
   display: flex;
   gap: 0.3em;
+  align-items: center;
 `;
 
 export const SNewPostCategoryWrapper = styled.div`
