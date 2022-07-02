@@ -8,6 +8,7 @@ import { PostDTO } from "dto/PostDTO";
 import { MainTitle } from "components/MainTitle";
 import { SSpecialButton } from "components/Header/styled";
 import { getUserIdFromToken } from "shared/utils";
+import { EmptyPostsList } from "components/EmptyPostsList";
 
 const MyPosts = () => {
   const [posts, setPosts] = useState<PostDTO[]>([]);
@@ -41,10 +42,16 @@ const MyPosts = () => {
         </SSpecialButton>
       </div>
       <div style={{ width: "50%", margin: "auto" }}>
-        {posts &&
+        {posts.length > 0 ? (
           posts.map((post) => (
             <PostPreview key={post.id} post={post} showTags={false} />
-          ))}
+          ))
+        ) : (
+          <EmptyPostsList
+            widthInPercentage={100}
+            text="You haven't posted anything yet."
+          />
+        )}
       </div>
     </Layout>
   );

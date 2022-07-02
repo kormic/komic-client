@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SEmptyPostsWrapper = styled.div`
+export const SEmptyPostsWrapper = styled.div<{ widthInPercentage: number }>`
   padding: 2rem;
   text-align: center;
   border: ${({ theme }) => `1px solid ${theme.articleColor}`};
@@ -11,7 +11,8 @@ export const SEmptyPostsWrapper = styled.div`
 
   @media (min-width: 768px) {
     border: ${({ theme }) => `1px solid ${theme.articleColor}`};
-    width: 70%;
-    margin-left: 15%;
+    width: ${({ widthInPercentage }) => widthInPercentage + "%"};
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
