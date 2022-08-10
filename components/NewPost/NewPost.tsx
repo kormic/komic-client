@@ -127,7 +127,6 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
     <SNewPostWrapper>
       <SNewPostMetaWrapper>
         <SNewPostTitleWrapper>
-          <label htmlFor='title-input'>Title: </label>
           <SNewPostTitleTextarea
             id='title-input'
             style={{ height: textareaHeight }}
@@ -137,7 +136,6 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
           />
         </SNewPostTitleWrapper>
         <SNewPostCategoryWrapper>
-          <span>Category: </span>
           {categories.map((cat) => (
             <React.Fragment key={cat.id}>
               <SNewPostCategorylabel

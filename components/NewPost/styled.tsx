@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 export const SNewPostWrapper = styled.section`
   width: 80%;
@@ -7,25 +7,33 @@ export const SNewPostWrapper = styled.section`
 `;
 
 export const SNewPostMetaWrapper = styled.div`
-  display: flex;
   justify-content: space-between;
   aling-items: center;
 
   > * > * {
     font-size: 1.2rem;
   }
+
+  @media (min-width: 770px) {
+    display: flex;
+  }
 `;
 
 export const SNewPostTitleWrapper = styled.div`
   flex: 1 0 60%;
-  display: flex;
   gap: 0.3em;
   align-items: center;
 `;
 
 export const SNewPostCategoryWrapper = styled.div`
   flex: 0 1 40%;
-  text-align: right;
+  text-align: center;
+  margin-top: 1rem;
+
+  @media (min-width: 770px) {
+    text-align: right;
+    margin-top: 0;
+  }
 `;
 
 export const SNewPostTitleTextarea = styled.textarea`
@@ -37,10 +45,19 @@ export const SNewPostTitleTextarea = styled.textarea`
   flex: 1;
   resize: none;
   line-height: 1em;
+  width: 100%;
 
   ::placeholder {
     color: ${({ theme }) => theme.bodyColor};
     opacity: 1; /* Firefox */
+  }
+
+  @media (min-width: 770px) {
+    line-height: 1.5em;
+
+    ::placeholder {
+      line-height: 2rem;
+    }
   }
 `;
 

@@ -29,7 +29,7 @@ export const truncate = (value: string, length: number) => {
 };
 
 export const MAX_DESCRIPTION_LENGTH = 100;
-export const TEXTAREA_HEIGHT = 25;
+export const TEXTAREA_HEIGHT = 45;
 export const monthNames = ["Jan", "Febr", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 ];
