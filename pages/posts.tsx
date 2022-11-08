@@ -1,9 +1,13 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
-import { PostsList } from "screens/postsList";
 import { getCategories } from "adapters/categories";
 import { getPosts } from "adapters/posts";
 import { Seo } from "components/Seo";
+import { Layout } from "components";
+import { EmptyPostsList } from "components/EmptyPostsList";
+import { SMain } from "components/Layout/Layout";
+import { MainTitle } from "components/MainTitle";
+import { PostPreview } from "components/PostPreview";
 
 export const getServerSideProps = async ({
   query,
@@ -33,7 +37,16 @@ const Posts = ({
         title='Posts about web and mobile development'
         description='Posts about web and mobile development'
       />
-      <PostsList posts={posts ?? []} />
+      <Layout>
+        <MainTitle subheader='clean code always looks like it was written by someone who cares' />
+        <SMain>
+          {posts.length > 0 ? (
+            posts.map((post) => <PostPreview key={post.id} post={post} />)
+          ) : (
+            <EmptyPostsList />
+          )}
+        </SMain>
+      </Layout>
     </>
   );
 };

@@ -1,9 +1,11 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
-import { PostPage } from "screens/posts";
 import { PostDTO } from "dto/PostDTO";
 import { getPostById } from "../../adapters/posts";
 import { Seo } from "components/Seo";
+import { Layout } from "components";
+import { SMain } from "components/Layout/Layout";
+import { Post } from "components/Post";
 
 export const getServerSideProps: GetServerSideProps<{
   post: PostDTO | undefined;
@@ -24,7 +26,9 @@ const PostById = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => (
   <>
     <Seo title={post?.title} description={post?.short_body} />
-    <PostPage post={post} />
+    <Layout>
+      <SMain>{post && <Post post={post} showDescription={false} />}</SMain>
+    </Layout>{" "}
   </>
 );
 

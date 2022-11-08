@@ -50,7 +50,7 @@ export const getPostById = async (id: string) => {
 
 export const getPostsByUserId = async (callFromClient: boolean, id: string, params = {
     categoryId: 1,
-    offset: 6,
+    offset: 0,
     limit: 6
 }) => {
     try {
