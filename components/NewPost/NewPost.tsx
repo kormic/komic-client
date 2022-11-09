@@ -20,6 +20,7 @@ import {
   SNewPostCategoryWrapper,
   SNewPostCategorylabel,
   SNewPostCategoryCheckbox,
+  SDescriptionTextarea,
 } from "./styled";
 import { addPost } from "adapters/posts";
 import { AddPostDTO } from "dto/AddPostDTO";
@@ -46,20 +47,45 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
   const [textareaHeight, setTextareaHeight] = useState(TEXTAREA_HEIGHT);
+  const [descriptionTextareaHeight, setDescriptionTextareaHeight] =
+    useState(TEXTAREA_HEIGHT);
 
-  const adjustTitleTextareaHeight = (height: number) => {
-    if (height > textareaHeight) {
-      setTextareaHeight(height);
+  const adjustTextareaHeight = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+    textAreaHeight: number,
+    callBack: React.Dispatch<React.SetStateAction<number>>
+  ) => {
+    if (e.target.scrollHeight > textAreaHeight) {
+      callBack(e.target.scrollHeight);
     }
   };
 
-  const savePost = (partialPost: Partial<AddPostDTO>) => {
+  const updatePostDTO = (
+    key: keyof AddPostDTO,
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const partialPost: Partial<AddPostDTO> = { [key]: e.target.value };
     setPost((prevPost) => ({ ...prevPost, ...partialPost }));
   };
 
+  const savePost = (postDto: AddPostDTO) => {
+    setPost((prevPost) => ({ ...prevPost, ...postDto }));
+  };
+
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    savePost({ title: e.target.value });
-    adjustTitleTextareaHeight(e.target.scrollHeight);
+    updatePostDTO("title", e);
+    adjustTextareaHeight(e, textareaHeight, setTextareaHeight);
+  };
+
+  const handleDescriptionInput = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    updatePostDTO("short_body", e);
+    adjustTextareaHeight(
+      e,
+      descriptionTextareaHeight,
+      setDescriptionTextareaHeight
+    );
   };
 
   // TODO: The type of the event here was
@@ -71,12 +97,10 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
   // successfully on vercel and then will investigate on this.
   const handleEditorChange = (e: any) => {
     const editorContent = e.target.getContent();
-    const shortBody = e.target.getBody().textContent.slice(0, 90);
 
     const newPost = {
       ...post,
       body: editorContent,
-      short_body: shortBody,
     };
 
     savePost(newPost);
@@ -133,6 +157,13 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
             maxLength={95}
             onBlur={handleInput}
             placeholder='here goes your post title...'
+          />
+          <SDescriptionTextarea
+            id='description-input'
+            style={{ height: descriptionTextareaHeight }}
+            onBlur={handleDescriptionInput}
+            maxLength={200}
+            placeholder='here goes your post description...'
           />
         </SNewPostTitleWrapper>
         <SNewPostCategoryWrapper>

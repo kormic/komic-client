@@ -61,6 +61,10 @@ export const SNewPostTitleTextarea = styled.textarea`
   }
 `;
 
+export const SDescriptionTextarea = styled(SNewPostTitleTextarea)`
+  color: ${({ theme }) => theme.bodyColor};
+`;
+
 export const SNewPostCategorylabel = styled.label<{ active: boolean }>`
   font-size: 0.8rem;
   padding: 0.2rem;
