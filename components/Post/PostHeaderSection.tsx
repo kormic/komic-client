@@ -15,23 +15,27 @@ type Props = {
   createdAt: string;
 };
 
-const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => (
-  <SPostTitleWrapper>
-    <SPostCreatedDiv>
-      <span style={{ fontWeight: 600 }}>Komic &bull; </span>
-      {monthNames[new Date(createdAt).getMonth()] +
-        " " +
-        new Date(createdAt).getDate()}
-    </SPostCreatedDiv>
-    <SPostH1>{title}</SPostH1>
-    <SPostSubheaderSpan>
-      {shortDescription.length > 0 &&
-      shortDescription.length < MAX_DESCRIPTION_LENGTH
-        ? shortDescription + "..."
-        : truncate(shortDescription, MAX_DESCRIPTION_LENGTH)}
-    </SPostSubheaderSpan>
-    {shortDescription.length > 0 && <Spacer space={0.46} />}
-  </SPostTitleWrapper>
-);
+const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => {
+  const createdAtDate = new Date(createdAt);
+
+  const getFormattedDate = () =>
+    `${
+      monthNames[createdAtDate.getMonth()]
+    } ${createdAtDate.getDate()}, ${createdAtDate.getFullYear()}`;
+
+  return (
+    <SPostTitleWrapper>
+      <SPostCreatedDiv>{getFormattedDate()}</SPostCreatedDiv>
+      <SPostH1>{title}</SPostH1>
+      <SPostSubheaderSpan>
+        {shortDescription.length > 0 &&
+        shortDescription.length < MAX_DESCRIPTION_LENGTH
+          ? shortDescription + "..."
+          : truncate(shortDescription, MAX_DESCRIPTION_LENGTH)}
+      </SPostSubheaderSpan>
+      {shortDescription.length > 0 && <Spacer space={0.46} />}
+    </SPostTitleWrapper>
+  );
+};
 
 export default PostHeaderSection;
