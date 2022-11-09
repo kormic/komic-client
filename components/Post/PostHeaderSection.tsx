@@ -30,7 +30,7 @@ const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => (
         ? shortDescription + "..."
         : truncate(shortDescription, MAX_DESCRIPTION_LENGTH)}
     </SPostSubheaderSpan>
-    {shortDescription.length > 0 && <Spacer space={1.5} />}
+    {shortDescription.length > 0 && <Spacer space={0.46} />}
   </SPostTitleWrapper>
 );
 
