@@ -1,14 +1,19 @@
-import { Login } from "components/Login";
-import { Portal } from "components/Portal";
-import { Profile } from "components/Profile";
-import { Registration } from "components/Registration";
-import { usePortal } from "context/PortalContext";
+import { Forgot } from 'components/Forgot';
+import { Login } from 'components/Login';
+import { Portal } from 'components/Portal';
+import { Profile } from 'components/Profile';
+import { Registration } from 'components/Registration';
+import { usePortal } from 'context/PortalContext';
 
 export const withPortals =
   <T,>(WrappedComponent: React.FC<T>) =>
-  (props: T) => {
-    const { isLoginVisible, isRegistrationVisible, isProfileVisible } =
-      usePortal();
+  (props: T & {}) => {
+    const {
+      isLoginVisible,
+      isForgotVisible,
+      isRegistrationVisible,
+      isProfileVisible,
+    } = usePortal();
 
     const ComponentWithPortals = (
       <>
@@ -16,6 +21,11 @@ export const withPortals =
         {isLoginVisible && (
           <Portal>
             <Login />
+          </Portal>
+        )}
+        {isForgotVisible && (
+          <Portal>
+            <Forgot />
           </Portal>
         )}
         {isRegistrationVisible && (

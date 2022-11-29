@@ -44,6 +44,8 @@ const validateFormData = (data: typeof initialFormData): string | null => {
   return null;
 };
 
+// TODO: This and Forgot are similar
+// probably there can be a reusable component (hoc)
 const Registration = () => {
   const { setIsLoginVisible, setIsRegistrationVisible } = usePortal();
 

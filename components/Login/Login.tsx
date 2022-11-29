@@ -18,9 +18,12 @@ const validateFormData = (data: { username: string; password: string }) => {
   } else return null;
 };
 
-const SUserSpan = styled.span`
-  padding: 0.5rem 0rem;
+const SFooter = styled.span`
+  display: flex;
+  flex-direction: column;
   font-size: 0.8rem;
+  margin: 0.5rem 0;
+  gap: 0.2rem;
 `;
 
 const SUserLink = styled.a`
@@ -28,17 +31,32 @@ const SUserLink = styled.a`
   cursor: pointer;
 `;
 
-const Footer = ({ onClick }: { onClick: () => void }) => (
-  <SUserSpan>
-    Don&apos;t have an account? Click{" "}
-    <SUserLink type='button' onClick={onClick}>
-      here
-    </SUserLink>
-  </SUserSpan>
+const Footer = ({
+  onForgotClick,
+  onSignupClick,
+}: {
+  onForgotClick: () => void;
+  onSignupClick: () => void;
+}) => (
+  <SFooter>
+    <div>
+      Forgot your password? Click{" "}
+      <SUserLink type='button' onClick={onForgotClick}>
+        here
+      </SUserLink>
+    </div>
+    <div>
+      Don&apos;t have an account?{" "}
+      <SUserLink type='button' onClick={onSignupClick}>
+        Sign up
+      </SUserLink>
+    </div>
+  </SFooter>
 );
 
 const Login = () => {
-  const { setIsLoginVisible, setIsRegistrationVisible } = usePortal();
+  const { setIsLoginVisible, setIsRegistrationVisible, setIsForgotVisible } =
+    usePortal();
   const { loginUser } = useAuthContext();
 
   const onSubmit = async (
@@ -56,9 +74,9 @@ const Login = () => {
     }
   };
 
-  const onFooterClick = () => {
+  const onFooterClick = (callback?: () => void) => {
     setIsLoginVisible?.(false);
-    setIsRegistrationVisible?.(true);
+    callback?.();
   };
 
   return (
@@ -73,7 +91,16 @@ const Login = () => {
       <UserForm
         submitButtonTitle='Login'
         initialFormData={{ username: "", password: "" }}
-        footer={() => <Footer onClick={onFooterClick} />}
+        footer={() => (
+          <Footer
+            onForgotClick={() =>
+              onFooterClick(() => setIsForgotVisible?.(true))
+            }
+            onSignupClick={() =>
+              onFooterClick(() => setIsRegistrationVisible?.(true))
+            }
+          />
+        )}
         validateFormData={validateFormData}
         onSubmit={onSubmit}
       >

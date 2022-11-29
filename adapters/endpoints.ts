@@ -1,40 +1,43 @@
 export const endpoints = {
-    USERS: {
-        AUTH: {
-            URL: '/users/authenticate'
-        },
-        REGISTER: {
-            URL: '/users/register'
-        },
-        PROFILE: {
-            URL: '/users/profile'
-        }
+  USERS: {
+    AUTH: {
+      URL: '/users/authenticate',
     },
-    CATEGORIES: {
-        URL: '/categories'
+    REGISTER: {
+      URL: '/users/register',
     },
-    POSTS: {
-        ALL: {
-            URL: '/posts',
-            PARAMS: {
-                CATEGORYID: 'categoryId',
-                LIMIT: 'limit',
-                OFFSET: 'offset'
-            }
-        },
-        BY_USERID: {
-            URL: '/posts/user',
-            PARAMS: {
-                CATEGORYID: 'categoryId',
-                LIMIT: 'limit',
-                OFFSET: 'offset'
-            }
-        },
-        ADD: {
-            URL: '/posts/add'
-        }
+    PROFILE: {
+      URL: '/users/profile',
     },
-    POST: {
-        URL: '/post'
-    }
-}
+    SEND_RESET_EMAIL: {
+      URL: '/users/sendEmail',
+    },
+  },
+  CATEGORIES: {
+    URL: '/categories',
+  },
+  POSTS: {
+    ALL: {
+      URL: '/posts',
+      PARAMS: {
+        CATEGORYID: 'categoryId',
+        LIMIT: 'limit',
+        OFFSET: 'offset',
+      },
+    },
+    BY_USERID: {
+      URL: '/posts/user',
+      PARAMS: {
+        CATEGORYID: 'categoryId',
+        LIMIT: 'limit',
+        OFFSET: 'offset',
+      },
+    },
+    ADD: {
+      URL: '/posts/add',
+    },
+  },
+  POST: {
+    URL: '/post',
+  },
+};
