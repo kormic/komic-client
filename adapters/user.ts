@@ -1,5 +1,6 @@
 import { RegisterUserDTO } from 'dto/RegisterUserDTO';
 import { ResetEmailDTO } from 'dto/ResetEmailDTO';
+import { ResetPasswordDTO } from 'dto/ResetPasswordDTO';
 import { UserProfileDTO } from 'dto/UserProfileDTO';
 import { getToken } from 'shared/utils';
 import { endpoints } from './endpoints';
@@ -66,7 +67,7 @@ export const registerUser = async (
 
 export const sendResetEmail = async (params: ResetEmailDTO) => {
   try {
-    const url = ` /api/v1${endpoints.USERS.SEND_RESET_EMAIL.URL}`;
+    const url = ` /api/v1${endpoints.USERS.PASSWORD.SEND_EMAIL.URL}`;
     const res = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
@@ -84,6 +85,33 @@ export const sendResetEmail = async (params: ResetEmailDTO) => {
   } catch (error) {
     return {
       errorMessage: (error as { errorMessage: string }).errorMessage,
+    };
+  }
+};
+
+export const resetPassword = async (
+  token: string,
+  params: ResetPasswordDTO
+) => {
+  try {
+    const url = ` /api/v1${endpoints.USERS.PASSWORD.RESET.URL}`;
+    const res = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `JWT ${token}`,
+      },
+      body: JSON.stringify(params),
+      method: 'POST',
+    });
+    const data = await res.json();
+
+    if (res.status === 200) {
+      return data;
+    }
+    throw data;
+  } catch (error) {
+    return {
+      errorMessage: 'An error has occured, please contact the administrator',
     };
   }
 };

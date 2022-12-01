@@ -9,8 +9,13 @@ export const endpoints = {
     PROFILE: {
       URL: '/users/profile',
     },
-    SEND_RESET_EMAIL: {
-      URL: '/users/sendEmail',
+    PASSWORD: {
+      SEND_EMAIL: {
+        URL: '/users/sendEmail',
+      },
+      RESET: {
+        URL: '/users/resetPassword',
+      },
     },
   },
   CATEGORIES: {
