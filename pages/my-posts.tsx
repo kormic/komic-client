@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import { Layout } from "components";
-import { PostPreview } from "components/PostPreview";
-import { getPostsByUserId } from "adapters/posts";
-import { PostDTO } from "dto/PostDTO";
-import { MainTitle } from "components/MainTitle";
-import { SSpecialButton } from "components/Header/styled";
-import { getUserIdFromToken } from "shared/utils";
-import { EmptyPostsList } from "components/EmptyPostsList";
-import styled from "styled-components";
+import { Layout } from 'components';
+import { PostPreview } from 'components/PostPreview';
+import { getPostsByUserId } from 'adapters/posts';
+import { PostDTO } from 'dto/PostDTO';
+import { MainTitle } from 'components/MainTitle';
+import { SSpecialButton } from 'components/Header/styled';
+import { getUserIdFromToken } from 'shared/utils';
+import { EmptyPostsList } from 'components/EmptyPostsList';
+import styled from 'styled-components';
 
 const SWriteAPostWrapper = styled.div`
   margin: 0 auto;
@@ -22,6 +22,7 @@ const SWriteAPostWrapper = styled.div`
 `;
 
 const SMyPostsWrapper = styled.div`
+  flex-grow: 1;
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
@@ -52,7 +53,7 @@ const MyPosts = () => {
     <Layout>
       <MainTitle title='Your Posts' />
       <SWriteAPostWrapper>
-        <SSpecialButton type='button' onClick={() => router.push("/new-post")}>
+        <SSpecialButton type='button' onClick={() => router.push('/new-post')}>
           Write a Post
         </SSpecialButton>
       </SWriteAPostWrapper>
