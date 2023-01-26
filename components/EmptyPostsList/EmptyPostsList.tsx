@@ -8,7 +8,7 @@ const EmptyPostsList: React.FC<{
 }> = ({
   text = `Unfortunately, there are no posts yet in this category. You could signup
 and request access from the administrator in order to start posting`,
-  widthInPercentage = 70,
+  widthInPercentage = 85,
 }) => {
   return (
     <SEmptyPostsWrapper widthInPercentage={widthInPercentage}>

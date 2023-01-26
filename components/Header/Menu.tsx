@@ -50,6 +50,7 @@ const Menu = ({ isMobile = false, categories }: Props) => {
 
   const handleLogout = () => {
     logoutUser?.();
+    router.replace("/");
   };
 
   const handleAuthClick = async () => {

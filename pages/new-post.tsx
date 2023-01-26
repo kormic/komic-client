@@ -12,14 +12,23 @@ import {
 import { useThemeContext } from "context/ThemeContext";
 import { NewPost } from "components/NewPost";
 import { NewPostRefProps } from "components/NewPost/NewPost";
+import { useAuthContext } from "context/AuthContext";
 
 const NewPostPage = () => {
+  const { auth } = useAuthContext();
+  const { isLoggedIn } = auth ?? { isLoggedIn: false };
   const router = useRouter();
   const { theme, toggleTheme } = useThemeContext();
   const defaultTheme = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
   const ref = useRef<NewPostRefProps>(null);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.replace("/posts");
+    }
+  }, [isLoggedIn, router]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -36,7 +45,7 @@ const NewPostPage = () => {
     success && navigateToMyPosts();
   };
 
-  return (
+  return isLoggedIn ? (
     <>
       <SNav>
         <SNavRow>
@@ -71,7 +80,7 @@ const NewPostPage = () => {
         {isMounted && <NewPost ref={ref} />}
       </SNav>
     </>
-  );
+  ) : null;
 };
 
 export default NewPostPage;

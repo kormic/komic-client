@@ -5,9 +5,11 @@ import { getPosts } from "adapters/posts";
 import { Seo } from "components/Seo";
 import { Layout } from "components";
 import { EmptyPostsList } from "components/EmptyPostsList";
-import { SMain } from "components/Layout/Layout";
+import { SAside, SMain, SMainContent } from "components/Layout/Layout";
 import { MainTitle } from "components/MainTitle";
 import { PostPreview } from "components/PostPreview";
+import { NewsLetter } from "components/NewsLetter";
+import { Tags } from "components/Tags";
 
 export const getServerSideProps = async ({
   query,
@@ -40,11 +42,17 @@ const Posts = ({
       <Layout>
         <MainTitle subheader='clean code always looks like it was written by someone who cares' />
         <SMain>
-          {posts.length > 0 ? (
-            posts.map((post) => <PostPreview key={post.id} post={post} />)
-          ) : (
-            <EmptyPostsList />
-          )}
+          <SAside>
+            <Tags />
+            <NewsLetter />
+          </SAside>
+          <SMainContent>
+            {posts.length > 0 ? (
+              posts.map((post) => <PostPreview key={post.id} post={post} />)
+            ) : (
+              <EmptyPostsList />
+            )}
+          </SMainContent>
         </SMain>
       </Layout>
     </>
