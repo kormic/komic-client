@@ -50,7 +50,9 @@ const NewPostPage = () => {
       <SNav>
         <SNavRow>
           <SSpecialButton
-            backgroundColor={defaultTheme.bodyBg}
+            backgroundColor={
+              theme === "dark" ? defaultTheme.bodyBg : defaultTheme.bodyColor
+            }
             color='white'
             type='button'
             onClick={navigateToMyPosts}
