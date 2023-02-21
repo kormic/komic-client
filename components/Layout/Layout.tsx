@@ -19,6 +19,7 @@ export const SMain = styled.main`
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 
   @media (min-width: 1024px) {
     gap: 1rem;
