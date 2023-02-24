@@ -39,8 +39,17 @@ export const SBrandLogoWrapper = styled.div`
 `;
 
 export const SBrandLogoImage = styled(Image)`
-  background-color: ${({ theme }) => theme.accent};
-  border-radius: 9999px;
+  // background-color: ${({ theme }) => theme.accent};
+  // border-radius: 9999px;
+`;
+
+export const SBrandLogoBgFix = styled.div`
+  position: absolute;
+  top: 5px;
+  background-color: lightgray;
+  width: 98%;
+  height: 65%;
+  z-index: -1;
 `;
 
 export const SNavList = styled.ul`
