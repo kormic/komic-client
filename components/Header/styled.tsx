@@ -20,7 +20,6 @@ export const SNavRow = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.41rem 0.9375rem;
-  background-color: ${({ theme }) => theme.headerBg};
 `;
 
 export const SBrandLogoWrapper = styled.div`
@@ -99,7 +98,6 @@ export const SMenuWrapper = styled.div`
 `;
 
 export const SMenuWrapperMobile = styled.div`
-  background-color: ${({ theme }) => theme.headerBg};
   border-radius: 0.5rem;
   padding-left: 0.9375rem;
   position: absolute;

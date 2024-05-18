@@ -6,7 +6,6 @@ export const SFooterWrapper = styled.footer`
   align-items: center;
   min-height: 12rem;
   justify-content: center;
-  background-color: ${({ theme }) => theme.footerBg};
 `;
 
 export const SFooterRowWrapper = styled.div<{

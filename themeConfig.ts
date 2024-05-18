@@ -1,26 +1,26 @@
-import { createGlobalStyle, DefaultTheme } from "styled-components"
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
   bodyBg: '#FFF',
   bodyColor: '#000',
   headerBg: '#eaeaea',
-  footerBg: '#eaeaea',
+  footerBg: '#eaeaea', // @deprecated
   accent: 'rgba(251, 191, 36, 1)',
   articleColor: '#5a5a5a',
   subtitleColor: '#808080',
-  specialButtonColor: 'rgba(252, 211, 77, 1)'
-}
+  specialButtonColor: 'rgba(252, 211, 77, 1)',
+};
 
 export const darkTheme: DefaultTheme = {
   bodyBg: '#363537',
   bodyColor: '#FFF',
-  headerBg: '#7E7E7F',
+  headerBg: '#7E7E7F', // @deprecated
   footerBg: '#7E7E7F',
   accent: 'rgba(251, 191, 36, 1)',
   articleColor: '#FFF',
   subtitleColor: '#d2d6dc',
-  specialButtonColor: 'rgba(252, 211, 77, 1)'
-}
+  specialButtonColor: 'rgba(252, 211, 77, 1)',
+};
 
 export const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme }>`
 html,
@@ -82,7 +82,8 @@ ul {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px ${({ theme }) => theme.accent};, 0 0 5px ${({ theme }) => theme.accent};;
+  box-shadow: 0 0 10px ${({ theme }) => theme.accent};, 0 0 5px ${({ theme }) =>
+  theme.accent};
   opacity: 1.0;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -111,8 +112,8 @@ ul {
   box-sizing: border-box;
 
   border: solid 2px transparent;
-  border-top-color: ${({ theme }) => theme.accent};;
-  border-left-color: ${({ theme }) => theme.accent};;
+  border-top-color: ${({ theme }) => theme.accent};
+  border-left-color: ${({ theme }) => theme.accent};
   border-radius: 50%;
 
   -webkit-animation: nprogress-spinner 400ms linear infinite;
@@ -138,4 +139,4 @@ ul {
   100% { transform: rotate(360deg); }
 }
 #####################
-`
+`;
