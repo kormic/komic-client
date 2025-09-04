@@ -30,11 +30,8 @@ module.exports = {
             to: path.join(__dirname, "public/tinymce"),
           },
         ],
-      })
+      }),
     );
-    return config;
-  },
-  webpackDevMiddleware: (config) => {
     return config;
   },
 };
