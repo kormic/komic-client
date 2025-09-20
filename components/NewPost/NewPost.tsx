@@ -32,7 +32,7 @@ export type NewPostRefProps = {
   handleUpload: () => Promise<boolean | undefined>;
 };
 
-const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
+const NewPost = React.forwardRef<NewPostRefProps, {}>(function NewPost({ }, ref) {
   const { categories } = useCategories();
   const [post, setPost] = useState<AddPostDTO>({
     user_id: -1,
@@ -171,7 +171,7 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
             <React.Fragment key={cat.id}>
               <SNewPostCategorylabel
                 htmlFor={cat.name}
-                active={selectedCategory.id === cat.id}
+                $active={selectedCategory.id === cat.id}
               >
                 {cat.name}
               </SNewPostCategorylabel>
@@ -188,7 +188,7 @@ const NewPost = React.forwardRef<NewPostRefProps, {}>(({}, ref) => {
           ))}
         </SNewPostCategoryWrapper>
       </SNewPostMetaWrapper>
-      <Spacer space={1} />
+      <Spacer $space={1} />
       <Editor
         tinymceScriptSrc='/tinymce/tinymce.min.js'
         onChange={(e) => handleEditorChange(e)}

@@ -65,10 +65,10 @@ export const SDescriptionTextarea = styled(SNewPostTitleTextarea)`
   color: ${({ theme }) => theme.bodyColor};
 `;
 
-export const SNewPostCategorylabel = styled.label<{ active: boolean }>`
+export const SNewPostCategorylabel = styled.label<{ $active: boolean }>`
   font-size: 0.8rem;
   padding: 0.2rem;
-  border: 1px solid ${({ active, theme }) => (active ? theme.accent : "#fff")};
+  border: 1px solid ${({ $active, theme }) => ($active ? theme.accent : "#fff")};
   border-radius: 0.25rem;
   margin-right: 0.4em;
   width: 90px;
@@ -76,7 +76,7 @@ export const SNewPostCategorylabel = styled.label<{ active: boolean }>`
   text-align: center;
   text-overflow: ellipsis;
   overflow: clip;
-  color: ${({ active, theme }) => (active ? theme.accent : "#fff")};
+  color: ${({ $active, theme }) => ($active ? theme.accent : "#fff")};
 
   :hover {
     cursor: pointer;

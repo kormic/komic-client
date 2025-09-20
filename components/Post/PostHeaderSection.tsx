@@ -19,8 +19,7 @@ const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => {
   const createdAtDate = new Date(createdAt);
 
   const getFormattedDate = () =>
-    `${
-      monthNames[createdAtDate.getMonth()]
+    `${monthNames[createdAtDate.getMonth()]
     } ${createdAtDate.getDate()}, ${createdAtDate.getFullYear()}`;
 
   return (
@@ -29,11 +28,11 @@ const PostHeaderSection = ({ title, shortDescription, createdAt }: Props) => {
       <SPostH1>{title}</SPostH1>
       <SPostSubheaderSpan>
         {shortDescription.length > 0 &&
-        shortDescription.length < MAX_DESCRIPTION_LENGTH
+          shortDescription.length < MAX_DESCRIPTION_LENGTH
           ? shortDescription + "..."
           : truncate(shortDescription, MAX_DESCRIPTION_LENGTH)}
       </SPostSubheaderSpan>
-      {shortDescription.length > 0 && <Spacer space={0.46} />}
+      {shortDescription.length > 0 && <Spacer $space={0.46} />}
     </SPostTitleWrapper>
   );
 };

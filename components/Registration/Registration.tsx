@@ -100,7 +100,7 @@ const Registration = () => {
         <SUserInput name='job_desc' placeholder='job description' />
         <SUserInput name='address' placeholder='address' />
         <SUserInput name='mobile' placeholder='mobile no' />
-        <Spacer space={0.4} />
+        <Spacer $space={0.4} />
       </UserForm>
     </SWrapper>
   );

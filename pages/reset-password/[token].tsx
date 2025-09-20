@@ -91,7 +91,7 @@ const ResetPassword = () => {
             placeholder='confirm password'
             type='password'
           />
-          <Spacer space={0.4} />
+          <Spacer $space={0.4} />
         </UserForm>
       </SWrapper>
     </div>

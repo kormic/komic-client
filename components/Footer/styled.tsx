@@ -9,12 +9,12 @@ export const SFooterWrapper = styled.footer`
 `;
 
 export const SFooterRowWrapper = styled.div<{
-  marginY?: string;
+  $marginY?: string;
 }>`
   display: flex;
   font-size: 0.7rem;
   gap: 1rem;
-  ${({ marginY }) => `margin: ${marginY ?? "1rem"} 0;`}
+  margin: ${({ $marginY }) => `${$marginY ?? "1rem"} 0;`} 
 `;
 
 export const SFooterMadeWithLoveWrapper = styled.div`

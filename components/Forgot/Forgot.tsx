@@ -56,7 +56,7 @@ const Forgot = () => {
         onSubmit={onSubmit}
       >
         <SUserInput name='email' placeholder='email' type='email' />
-        <Spacer space={0.4} />
+        <Spacer $space={0.4} />
       </UserForm>
     </SWrapper>
   );

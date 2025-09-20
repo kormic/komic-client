@@ -20,7 +20,7 @@ const MenuItem = ({ children, category, isActive }: PropsWithChildren<{
   isActive: boolean;
 }>) => {
   return (
-    <SNavListItem active={isActive}>
+    <SNavListItem $active={isActive}>
       <Link
         key={category.id}
         href={`${endpoints.POSTS.ALL.URL}?${endpoints.POSTS.ALL.PARAMS.CATEGORYID}=${category.id}&${endpoints.POSTS.ALL.PARAMS.OFFSET}=0&${endpoints.POSTS.ALL.PARAMS.LIMIT}=6`}
@@ -94,17 +94,17 @@ const Menu = ({ isMobile = false, categories }: Props) => {
         {isLoggedIn && (
           <>
             <SSeparator isMobile={isMobile} />
-            <SNavListItem active={router.pathname === "/my-posts"}>
+            <SNavListItem $active={router.pathname === "/my-posts"}>
               <Link href='/my-posts' passHref>
                 my posts
               </Link>
             </SNavListItem>
             <SNavListItem
-              active={false}
-              onMouseOver={(e) =>
+              $active={false}
+              onMouseOver={(e: React.MouseEvent<HTMLLIElement>) =>
                 e.currentTarget.style.setProperty("color", theme.accent)
               }
-              onMouseOut={(e) => e.currentTarget.style.removeProperty("color")}
+              onMouseOut={(e: React.MouseEvent<HTMLLIElement>) => e.currentTarget.style.removeProperty("color")}
               onClick={() => setIsProfileVisible?.(true)}
             >
               profile
@@ -112,7 +112,7 @@ const Menu = ({ isMobile = false, categories }: Props) => {
           </>
         )}
         {isMobile ? (
-          <SNavListItem active onClick={handleAuthClick}>
+          <SNavListItem $active onClick={handleAuthClick}>
             {isLoggedIn ? "logout" : "login"}
           </SNavListItem>
         ) : (
