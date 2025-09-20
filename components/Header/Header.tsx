@@ -38,16 +38,17 @@ const Header = () => {
     <SHeader>
       <SNav>
         <SNavRow>
-          <Link href={firstCategoryHref} passHref>
-            <SHelloMessage>{">"} helllo</SHelloMessage>
-          </Link>
+          <SHelloMessage><Link href={firstCategoryHref} passHref>
+            {">"} helllo
+          </Link></SHelloMessage>
+
           {showBrandLogo && (
-            <Link href={firstCategoryHref} passHref>
-              <SBrandLogoWrapper>
+            <SBrandLogoWrapper>
+              <Link href={firstCategoryHref} passHref>
                 <SBrandLogoImage src={owlImage} alt="Komic Logo" />
                 <SBrandLogoBgFix></SBrandLogoBgFix>
-              </SBrandLogoWrapper>
-            </Link>
+              </Link>
+            </SBrandLogoWrapper>
           )}
           <SThemeToggleWrapper>
             <SSunIcon

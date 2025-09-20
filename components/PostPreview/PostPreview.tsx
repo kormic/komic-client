@@ -39,7 +39,7 @@ const PostTags = ({
 
 const PostPreview = ({ post, showTags = true }: Props) => {
   return (
-    <Link href={`${endpoints.POST.URL}/${post.id}`} passHref>
+    <Link legacyBehavior href={`${endpoints.POST.URL}/${post.id}`} passHref>
       <SA>
         <SArticle>
           <PostHeaderSection

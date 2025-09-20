@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { PropsWithChildren } from "react";
 
 import { CategoryDTO } from "dto/CategoryDTO";
 import {
@@ -14,10 +15,10 @@ import { useAuthContext } from "context/AuthContext";
 import { usePortal } from "context/PortalContext";
 import { useTheme } from "styled-components";
 
-const MenuItem: React.FC<{
+const MenuItem = ({ children, category, isActive }: PropsWithChildren<{
   category: CategoryDTO;
   isActive: boolean;
-}> = ({ children, category, isActive }) => {
+}>) => {
   return (
     <SNavListItem active={isActive}>
       <Link
@@ -25,7 +26,7 @@ const MenuItem: React.FC<{
         href={`${endpoints.POSTS.ALL.URL}?${endpoints.POSTS.ALL.PARAMS.CATEGORYID}=${category.id}&${endpoints.POSTS.ALL.PARAMS.OFFSET}=0&${endpoints.POSTS.ALL.PARAMS.LIMIT}=6`}
         passHref
       >
-        <a>{children}</a>
+        {children}
       </Link>
     </SNavListItem>
   );
@@ -95,7 +96,7 @@ const Menu = ({ isMobile = false, categories }: Props) => {
             <SSeparator isMobile={isMobile} />
             <SNavListItem active={router.pathname === "/my-posts"}>
               <Link href='/my-posts' passHref>
-                <a>my posts</a>
+                my posts
               </Link>
             </SNavListItem>
             <SNavListItem

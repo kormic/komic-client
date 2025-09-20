@@ -40,6 +40,8 @@ export const SBrandLogoWrapper = styled.div`
 export const SBrandLogoImage = styled(Image)`
   // background-color: ${({ theme }) => theme.accent};
   // border-radius: 9999px;
+  width: 100%;
+  height: auto;
 `;
 
 export const SBrandLogoBgFix = styled.div`

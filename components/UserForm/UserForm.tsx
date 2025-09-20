@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { isStyledComponent } from 'styled-components';
 
 import { useForm } from 'hooks/useForm';
