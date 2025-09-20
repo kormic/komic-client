@@ -49,7 +49,7 @@ export const SUserInput = styled.input`
     border: 1px solid #000;
   }
 
-  :disabled {
+  &:disabled {
     color: ${({ theme }) => theme.articleColor};
     opacity: 1; /* iOS */
     cursor: not-allowed;
