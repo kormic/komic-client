@@ -3,6 +3,9 @@ const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  compiler: {
+    styledComponents: true,
+  },
   reactStrictMode: true,
   async rewrites() {
     return [

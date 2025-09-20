@@ -22,11 +22,11 @@ export const SArticle = styled.article`
   }
 
   :hover {
-    cursor: default;
+    cursor: pointer;
   }
 
-  :last-child {
-    border-bottom: 0;
+  :hover h1 {
+    color: ${({ theme }) => theme.accent};
   }
 
   @media (max-width: 1024px) {

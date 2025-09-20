@@ -74,7 +74,7 @@ const MyPosts = () => {
           ))
         ) : (
           <EmptyPostsList
-            widthInPercentage={100}
+            $widthInPercentage={100}
             text="You haven't posted anything yet."
           />
         )}

@@ -198,8 +198,8 @@ export const SHelloMessage = styled.div`
   }
 `;
 
-export const SSeparator = styled.div<{ isMobile: boolean }>`
-  height: ${({ isMobile }) => (isMobile ? "1px;" : "1em;")}
+export const SSeparator = styled.div<{ $isMobile: boolean }>`
+  height: ${({ $isMobile }) => ($isMobile ? "1px;" : "1em;")}
   border: ${({ theme }) => `1px solid ${theme.bodyColor}`};
   opacity: 0.7;
 `;

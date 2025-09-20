@@ -39,21 +39,19 @@ const PostTags = ({
 
 const PostPreview = ({ post, showTags = true }: Props) => {
   return (
-    <Link legacyBehavior href={`${endpoints.POST.URL}/${post.id}`} passHref>
-      <SA>
-        <SArticle>
-          <PostHeaderSection
-            title={post.title}
-            shortDescription={post.short_body}
-            createdAt={post.createdAt}
-          />
-          {showTags && (
-            <SPostPreviewBottomWrapper>
-              <PostTags tags={post.tags} categoryId={post.categoryId} />
-            </SPostPreviewBottomWrapper>
-          )}
-        </SArticle>
-      </SA>
+    <Link href={`${endpoints.POST.URL}/${post.id}`} passHref>
+      <SArticle>
+        <PostHeaderSection
+          title={post.title}
+          shortDescription={post.short_body}
+          createdAt={post.createdAt}
+        />
+        {showTags && (
+          <SPostPreviewBottomWrapper>
+            <PostTags tags={post.tags} categoryId={post.categoryId} />
+          </SPostPreviewBottomWrapper>
+        )}
+      </SArticle>
     </Link>
   );
 };

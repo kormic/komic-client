@@ -93,7 +93,7 @@ const Menu = ({ isMobile = false, categories }: Props) => {
         })}
         {isLoggedIn && (
           <>
-            <SSeparator isMobile={isMobile} />
+            <SSeparator $isMobile={isMobile} />
             <SNavListItem $active={router.pathname === "/my-posts"}>
               <Link href='/my-posts' passHref>
                 my posts

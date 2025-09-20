@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 
@@ -7,7 +7,7 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  bottom 0;
+  bottom: 0;
   background-color: ${({ theme }) => theme.bodyBg};
   z-index: 1000;
   display: flex;
@@ -15,10 +15,10 @@ const Overlay = styled.div`
   justify-content: center;
 `;
 
-const Portal: React.FC<{ onOutsideClick?: () => void }> = ({
+const Portal = ({
   children,
   onOutsideClick,
-}) => {
+}: PropsWithChildren<{ onOutsideClick?: () => void }>) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
