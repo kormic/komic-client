@@ -55,7 +55,7 @@ export const SUserInput = styled.input`
     cursor: not-allowed;
   }
 
-  ::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.accent};
     opacity: 1; /* Firefox */
   }
