@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import { SA, SPostPreviewBottomWrapper, SPostTagsWrapper } from "./styled";
+import { SPostPreviewBottomWrapper, SPostTagsWrapper } from "./styled";
 import PostHeaderSection from "components/Post/PostHeaderSection";
 import { SArticle } from "components/Post/styled";
 import { PostDTO, Tag } from "dto/PostDTO";

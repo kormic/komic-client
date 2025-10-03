@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 import { Footer } from "components/Footer";
@@ -49,7 +49,7 @@ export const SAside = styled.aside`
   }
 `;
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
     <SSection>
       <Header />
