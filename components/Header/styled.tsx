@@ -100,6 +100,7 @@ export const SMenuWrapper = styled.div`
 `;
 
 export const SMenuWrapperMobile = styled.div`
+  background-color: ${({ theme }) => theme.headerBg};
   border-radius: 0.5rem;
   padding-left: 0.9375rem;
   position: absolute;
