@@ -5,7 +5,6 @@ import Head from "next/head";
 import React from "react";
 import { start as startLoader, done as stopLoader } from "nprogress";
 
-import { GlobalStyles } from "../themeConfig";
 import { CategoriesProvider } from "context/CategoriesContext";
 import { CategoryDTO } from "dto/CategoryDTO";
 import { getCategories } from "../adapters/categories";
@@ -23,15 +22,14 @@ const MyApp = ({
   categories,
 }: AppProps & { categories: CategoryDTO[] }) => (
   <ThemeContextProvider>
-    <GlobalStyles />
     <AuthProvider>
       <PortalContextProvider>
         <CategoriesProvider initialCategories={categories}>
           <>
             <Head>
               <meta
-                name='viewport'
-                content='width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0'
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
               />
             </Head>
             <Component {...pageProps} />
