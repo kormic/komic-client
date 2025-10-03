@@ -3,7 +3,7 @@ import styled, { useTheme } from "styled-components";
 
 import { Footer } from "components/Footer";
 import { Header } from "../Header";
-import { withPortals } from "hoc/withPortals";
+import { WithPortals } from "hoc/WithPortals";
 import StyledComponentsRegistry from "lib/registry";
 import { GlobalStyles } from "themeConfig";
 
@@ -57,7 +57,7 @@ const Layout = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <GlobalStyles theme={theme}/>
+      <GlobalStyles theme={theme} />
       <SSection>
         <Header />
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
@@ -67,4 +67,4 @@ const Layout = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default withPortals<{ children: React.ReactNode }>(Layout);
+export default WithPortals<{ children: React.ReactNode }>(Layout);

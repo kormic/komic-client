@@ -5,9 +5,9 @@ import { Profile } from 'components/Profile';
 import { Registration } from 'components/Registration';
 import { usePortal } from 'context/PortalContext';
 
-export const withPortals =
+export const WithPortals =
   <T,>(WrappedComponent: React.FC<T>) =>
-  (props: T & {}) => {
+  function WithPortals(props: T & {}) {
     const {
       isLoginVisible,
       isForgotVisible,
