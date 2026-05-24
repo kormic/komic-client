@@ -152,8 +152,8 @@ export const SHintSpan = styled.span`
 `;
 
 export const SSpecialButton = styled.button<{
-  backgroundColor?: string;
-  color?: string;
+  $backgroundColor?: string;
+  $color?: string;
 }>`
   display: block;
   cursor: pointer;
@@ -161,9 +161,9 @@ export const SSpecialButton = styled.button<{
   border-radius: 0.25rem;
   padding: 0.1rem 1rem;
   font-size: 1rem;
-  ${({ color }) => color && `color: ${color};`};
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor ?? theme.specialButtonColor};
+  ${({ $color }) => $color && `color: ${$color};`};
+  background-color: ${({ $backgroundColor, theme }) =>
+    $backgroundColor ?? theme.specialButtonColor};
 
   :hover {
     background-color: ${({ theme }) => theme.accent};

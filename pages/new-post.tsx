@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "styled-components";
 
 import {
@@ -50,10 +50,10 @@ const NewPostPage = () => {
       <SNav>
         <SNavRow>
           <SSpecialButton
-            backgroundColor={
+            $backgroundColor={
               theme === "dark" ? defaultTheme.bodyBg : defaultTheme.bodyColor
             }
-            color='white'
+            $color='white'
             type='button'
             onClick={navigateToMyPosts}
           >
