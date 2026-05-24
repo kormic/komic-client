@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start --webpack",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -13,10 +13,10 @@
     "babel-plugin-styled-components": "^1.13.2",
     "html-react-parser": "^5.2.6",
     "jsonwebtoken": "^8.5.1",
-    "next": "^15.5.4",
+    "next": "16.2.6",
     "nprogress": "^0.2.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "styled-components": "^6.0.0",
     "stylis": "^4.0.0"
   },
@@ -24,11 +24,16 @@
     "@eslint/eslintrc": "^3",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.0",
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
     "copy-webpack-plugin": "^11.0.0",
     "eslint": "^9.37.0",
-    "eslint-config-next": "^15.5.4",
+    "eslint-config-next": "16.2.6",
     "typescript": "5.9.3"
+  },
+  "packageManager": "yarn@4.15.0",
+  "resolutions": {
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3"
   }
 }

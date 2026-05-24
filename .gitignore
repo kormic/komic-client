@@ -6,6 +6,11 @@
 /node_modules
 /.pnp
 .pnp.js
+.pnp.*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
 
 # testing
 /coverage
@@ -13,6 +18,7 @@
 # next.js
 /.next/
 /out/
+*.tsbuildinfo
 
 # production
 /build
