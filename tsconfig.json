@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0", // TODO: Refactor to remove baseUrl and remove this option
     "target": "es6",
     "lib": [
       "dom",
@@ -20,8 +18,11 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "paths": {
+      "*": [
+        "./*"
+      ],
       "@components": [
-        "components/"
+        "./components/"
       ]
     },
     "incremental": true
