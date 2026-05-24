@@ -10,6 +10,10 @@ import {
 import { ColorSpan } from "components/ColorSpan";
 import { SSpecialButton } from "components/Header/styled";
 
+type UserFormChildProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  name?: string;
+};
+
 export const UserForm = <T extends Record<string, unknown>>({
   submitButtonTitle = "",
   ...props
@@ -33,18 +37,29 @@ export const UserForm = <T extends Record<string, unknown>>({
     <SUserFormWrapper>
       <SUserForm>
         {React.Children.map(props.children, (child) => {
-          if (React.isValidElement(child)) {
+          if (React.isValidElement<UserFormChildProps>(child)) {
             const isInput =
               child.type === "input" ||
               (isStyledComponent(child.type) && child.type === SUserInput);
-            const inputProps = isInput && {
-              value: formData[child.props.name],
-              onChange: (e: any) =>
-                setFormData((prev: any) => ({
-                  ...prev,
-                  [child.props.name]: e.target.value,
-                })),
-            };
+
+            if (!isInput) {
+              React.cloneElement(child, {
+                ...child.props,
+              });
+            }
+
+            const inputName = child.props.name;
+            const inputProps = inputName
+              ? {
+                value: String(formData[inputName] ?? ""),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    [inputName]: e.target.value,
+                  })),
+              }
+              : {};
+
             return React.cloneElement(child, {
               ...inputProps,
               ...child.props,
