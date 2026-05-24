@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { darkTheme, lightTheme } from "themeConfig";
+import { GlobalStyles, darkTheme, lightTheme } from "themeConfig";
 
 type ThemeContextType = {
   theme?: string;
@@ -23,6 +23,8 @@ const ThemeContext = React.createContext<ThemeContextType | undefined>(
 // Also set the theme based on the user's system theme
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = React.useState<THEME>(THEME.LIGHT);
+  
+  const currentTheme = theme === THEME.LIGHT ? lightTheme : darkTheme;
 
   useEffect(() => {
     setTheme((localStorage.getItem(themeKey) as THEME) ?? THEME.LIGHT);
@@ -35,7 +37,8 @@ const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ThemeProvider theme={theme == "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={currentTheme}>
+      <GlobalStyles theme={currentTheme} />
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         {children}
       </ThemeContext.Provider>

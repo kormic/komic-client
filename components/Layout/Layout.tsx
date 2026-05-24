@@ -1,11 +1,10 @@
 import React, { PropsWithChildren } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 import { Footer } from "components/Footer";
 import { Header } from "../Header";
 import { WithPortals } from "hoc/WithPortals";
 import StyledComponentsRegistry from "lib/registry";
-import { GlobalStyles } from "themeConfig";
 
 const SSection = styled.section`
   height: 100%;
@@ -53,11 +52,8 @@ export const SAside = styled.aside`
 
 // TODO: Probably this needs to be replaced by a root layout
 const Layout = ({ children }: PropsWithChildren) => {
-  const theme = useTheme();
-
   return (
     <>
-      <GlobalStyles theme={theme} />
       <SSection>
         <Header />
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
