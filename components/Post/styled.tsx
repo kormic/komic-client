@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SArticle = styled.article`
+  width: 100%;
   padding: 2.1875rem 0px;
   border-bottom: 1px solid #eee;
   border: 1px solid transparent;
